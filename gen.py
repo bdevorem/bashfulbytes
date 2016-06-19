@@ -71,7 +71,6 @@ def gather_metadata(meta, link):
 	name = meta['title']
 	RECENT[name] = [oldest_time, link]
 	tmp = name
-	print len(RECENT)
 	if len(RECENT) > 5:
 		for name, [time, link] in RECENT.iteritems():
 			if time < oldest_time: # found a new oldest
