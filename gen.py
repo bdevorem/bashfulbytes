@@ -25,6 +25,7 @@ from jinja2.environment import Environment
 
 SRC_PATH = "./posts_md"
 TARGET_PATH = "./posts/templates"
+LINK = "./posts/"
 
 RECENT = {}
 RESEARCH = {}
@@ -39,10 +40,11 @@ def convert_mds(source, target):
 		filename, fileext = os.path.splitext(infile)
 		
 		outfilepath = os.path.join(target, "{}.html".format(filename))
+		link =  os.path.join(LINK, "{}.html".format(filename))
 		outfile = open(outfilepath, 'w')
 
 		output = markdown_path(filepath, extras=['metadata'])
-		gather_metadata(output.metadata, outfilepath)
+		gather_metadata(output.metadata, link)
 	
 		
 		content = '''
@@ -55,26 +57,27 @@ def convert_mds(source, target):
 		outfile.close()
 
 def gather_metadata(meta, link):
+	if meta['tag'] == 'research':
+		RESEARCH[meta['title']] = link
+	elif meta['tag'] == 'programming':
+		PROG[meta['title']] = link
+	else:
+		RANDOM[meta['title']] = link
 
-		if meta['tag'] == 'research':
-			RESEARCH[meta['title']] = link
-		elif meta['tag'] == 'programming':
-			PROG[meta['title']] = link
-		else:
-			RANDOM[meta['title']] = link
+	dt = [int(d) for d in meta['date'].split()]
+	meta['date'] = date(dt[0], dt[1], dt[2])
 
-		dt = [int(d) for d in meta['date'].split()]
-		meta['date'] = date(dt[0], dt[1], dt[2])
-
-		oldest_time = meta['date']
-		name = meta['title']
-		RECENT[oldest_time] = [name, link]
-
-		if len(RECENT) > 5:
-			for time, info in RECENT.iteritems():
-				if time < oldest_time: # found a new oldest
-					oldest_time = time
-			RECENT.pop(oldest_time, None)
+	oldest_time = meta['date']
+	name = meta['title']
+	RECENT[name] = [oldest_time, link]
+	tmp = name
+	print len(RECENT)
+	if len(RECENT) > 5:
+		for name, [time, link] in RECENT.iteritems():
+			if time < oldest_time: # found a new oldest
+				oldest_time = time
+				tmp = name
+		RECENT.pop(tmp, None)
 
 def create_index():
 	
@@ -128,11 +131,16 @@ def create_index():
 	#print html
 	#index.write(html)
 
+def render_jinja():
+		os.system("staticjinja build")
+		os.system("cd posts/ && staticjinja build")
+		os.system("cd pages/ && staticjinja build")
 
 if __name__ == '__main__':
 
 	convert_mds(SRC_PATH, TARGET_PATH)
 	create_index()
+	render_jinja()
 	#for k, v in RECENT.iteritems():
 	#	print k + '-->' + str(v)
 
