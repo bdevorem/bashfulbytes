@@ -21,11 +21,10 @@ from jinja2.environment import Environment
 # tag:
 # ---
 
-# TODO: files in html to extend base template
 # TODO: add next/previous posts on each page
 
 SRC_PATH = "./posts_md"
-TARGET_PATH = "./posts"
+TARGET_PATH = "./posts/templates"
 
 RECENT = {}
 RESEARCH = {}
@@ -67,26 +66,30 @@ def gather_metadata(meta, link):
 		dt = [int(d) for d in meta['date'].split()]
 		meta['date'] = date(dt[0], dt[1], dt[2])
 
-		oldest = meta['date']
+		oldest_time = meta['date']
 		name = meta['title']
-		RECENT[name] = oldest
+		RECENT[oldest_time] = [name, link]
 
 		if len(RECENT) > 5:
-			for name, time in RECENT:
-				if time < oldest:
-					oldest = time
-					name = name
-			RECENT.pop(name, None)
+			for time, info in RECENT.iteritems():
+				if time < oldest_time: # found a new oldest
+					oldest_time = time
+			RECENT.pop(oldest_time, None)
 
 def create_index():
 	
 	try:
-		os.remove("index.html")
+		os.remove("./templates/index.html")
 	except Exception as e:
-		print e
+		pass
 	index = open("./templates/index.html", 'w')
 
 	recent, research, programming, random = '', '', '', ''
+	
+	for time, [name, link] in RECENT.iteritems():
+		recent = recent +  "[{}]({})  \r".format(name, link)
+	recent_html = markdown.markdown(recent)
+
 	for title, link in RESEARCH.iteritems():
 		research = research + "[{}]({})  \r".format(title, link)
 	research_html = markdown.markdown(research)
@@ -101,7 +104,7 @@ def create_index():
 
 	
 	content = '''
-{{% extends "base_archive.html" %}}
+{{% extends "base.html" %}}
 {{% block recent %}}
 {}
 {{% endblock %}}
@@ -114,7 +117,7 @@ def create_index():
 {{% block random %}}
 {}
 {{% endblock %}}
-'''.format(recent, research_html, programming_html, random_html)
+'''.format(recent_html, research_html, programming_html, random_html)
 	index.write(content)
 
 	# TODO: make this work, instead of using staticjinja

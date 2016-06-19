@@ -1,5 +1,5 @@
 ---
-title: test2
+title: Test 2
 date: 2016 6 18
 tag: test
 ---
