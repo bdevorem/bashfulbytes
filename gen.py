@@ -89,7 +89,7 @@ def create_index():
 
 	recent, research, programming, random = '', '', '', ''
 	
-	for time, [name, link] in RECENT.iteritems():
+	for name, [time, link] in RECENT.iteritems():
 		recent = recent +  "[{}]({})  \r".format(name, link)
 	recent_html = markdown.markdown(recent)
 
