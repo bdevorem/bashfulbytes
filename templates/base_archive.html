@@ -31,14 +31,23 @@
 	{% endblock %} 
 
   	<body>
-    	{% block content %}{% endblock %}
+		<h3> Recent </h3>
+		{% block recent %}{% endblock %}
+		<hr>
+		<h3> Research </h3>
+		{% block research %}{% endblock %}
+		<hr>
+		<h3> Programming </h3>
+		{% block programming %}{% endblock %}
+		<hr>
+		<h3> Random </h3>
+		{% block random %}{% endblock %}
 
-    	<footer class="footer">
-      		{% block footer %}
+      	{% block footer %}
+    		<footer class="footer">
       			<center>&copy; Breanna Devore-McDonald. Built with <a href="https://www.python.org/">Python</a>. June 2016</center>
-	  		{% endblock %}
-    	</footer>
-
+    		</footer>
+	  	{% endblock %}
   	</body>
 	</div>
 </html>

@@ -45,8 +45,14 @@ def convert_mds(source, target):
 		output = markdown_path(filepath, extras=['metadata'])
 		gather_metadata(output.metadata, outfilepath)
 	
-		# TODO: extend base.tmpl here	
-		outfile.write(output)
+		
+		content = '''
+{{% extends "base.html" %}}
+{{% block content %}}
+{}
+{{% endblock %}}
+'''.format(output)
+		outfile.write(content)
 		outfile.close()
 
 def gather_metadata(meta, link):
@@ -94,9 +100,8 @@ def create_index():
 	random_html = markdown.markdown(random)
 
 	
-	contents = '''
-{{% extends "base.html" %}}
-{{{{ title }}}}
+	content = '''
+{{% extends "base_archive.html" %}}
 {{% block recent %}}
 {}
 {{% endblock %}}
@@ -110,8 +115,9 @@ def create_index():
 {}
 {{% endblock %}}
 '''.format(recent, research_html, programming_html, random_html)
-	index.write(contents)
+	index.write(content)
 
+	# TODO: make this work, instead of using staticjinja
 	#env = Environment(loader=FileSystemLoader('.'))
 	#template = env.get_template("./templates/index_template.html")
 	#print template
