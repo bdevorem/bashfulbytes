@@ -1,122 +1,18 @@
-<!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
-<head>
-<meta charset="utf-8">
-<base href="https://bdevorem.github.io/index.html">
-<meta name="description" content="Just some breezy CS musings">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>$_Bashful Bytes</title>
-<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<meta content="#5670d4" name="theme-color">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
-<link rel="canonical" href="https://bdevorem.github.io/index.html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/test2.html" type="text/html">
-</head>
-<body>
-<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-<!-- Menubar -->
+{% extends "base.tmpl" %}
+{% block recent %}
 
-<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
-<!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://bdevorem.github.io/">
+{% endblock %}
+{% block research %}
 
-                <span id="blog-title">$_Bashful Bytes</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="archive.html">Archive</a>
-                </li>
-<li>
-<a href="categories/">Tags</a>
-                </li>
-<li>
-<a href="rss.xml">RSS feed</a>
+{% endblock %}
+{% block programming %}
 
-                
-            </li>
-</ul>
-<ul class="nav navbar-nav navbar-right"></ul>
-</div>
-<!-- /.navbar-collapse -->
-    </div>
-<!-- /.container -->
-</nav><!-- End of Menubar --><div class="container" id="content" role="main">
-    <div class="body-content">
-        <!--Body content-->
-        <div class="row">
-            
-            
-
-    
-<div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/test2.html" class="u-url">test2</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                br33zyxr
-            </span></p>
-            <p class="dateline"><a href="posts/test2.html" rel="bookmark"><time class="published dt-published" datetime="2016-06-18T13:39:07-07:00" title="2016-06-18 13:39">2016-06-18 13:39</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/test2.html#disqus_thread" data-disqus-identifier="cache/posts/test2.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<h3>Test2</h3>
-<p>Trying to figure out how Nikola converts the mds to html files in
-order to create me own static site generator.</p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/test.html" class="u-url">Test</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                br33zyxr
-            </span></p>
-            <p class="dateline"><a href="posts/test.html" rel="bookmark"><time class="published dt-published" datetime="2016-06-17T22:31:14-07:00" title="2016-06-17 22:31">2016-06-17 22:31</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/test.html#disqus_thread" data-disqus-identifier="cache/posts/test.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<h3>Testing Nikola.</h3>
-<p>Come through tesla!</p>
-</div>
-    </div>
-    </article>
-</div>
-
-
-
-        
-       <script>var disqus_shortname="bashfulbytes";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
-</div>
-        <!--End of body content-->
-
-        <footer id="footer"></footer>
-</div>
-</div>
-
-
-            <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
-</body>
-</html>
+{% endblock %}
+{% block random %}
+<p><a href="./posts/test1.html">test</a><br />
+<a href="./posts/test3.html">Test3</a><br />
+<a href="./posts/test2.html">test2</a><br />
+<a href="./posts/test.html">first test</a><br />
+<a href="./posts/test4.html">test4</a>  </p>
+{% endblock %}

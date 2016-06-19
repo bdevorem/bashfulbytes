@@ -1,0 +1,5 @@
+*.doit.db
+*.bk
+*.swp
+*.pyc
+__pycache__/*
