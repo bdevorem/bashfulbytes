@@ -92,7 +92,7 @@ def create_index():
 
 	
 	contents = '''
-{{% extends "base.tmpl" %}}
+{{% extends "./templates/base.html" %}}
 {{% block recent %}}
 {}
 {{% endblock %}}
