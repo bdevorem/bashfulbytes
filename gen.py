@@ -7,9 +7,12 @@ import sys
 import yaml
 import markdown
 import markdown.extensions.codehilite
-import frontmatter
 from markdown2 import markdown_path
 from datetime import date
+import jinja2
+from jinja2 import FileSystemLoader
+from jinja2.environment import Environment
+
 
 # yaml front matter ex.
 # ---
@@ -75,7 +78,7 @@ def create_index():
 		os.remove("index.html")
 	except Exception as e:
 		print e
-	index = open("index.html", 'w')
+	index = open("./templates/index.html", 'w')
 
 	recent, research, programming, random = '', '', '', ''
 	for title, link in RESEARCH.iteritems():
@@ -92,7 +95,8 @@ def create_index():
 
 	
 	contents = '''
-{{% extends "./templates/base.html" %}}
+{{% extends "base.html" %}}
+{{{{ title }}}}
 {{% block recent %}}
 {}
 {{% endblock %}}
@@ -106,9 +110,15 @@ def create_index():
 {}
 {{% endblock %}}
 '''.format(recent, research_html, programming_html, random_html)
-
 	index.write(contents)
-	index.close()
+
+	#env = Environment(loader=FileSystemLoader('.'))
+	#template = env.get_template("./templates/index_template.html")
+	#print template
+	#html = template.render(title="dg")
+	#print html
+	#index.write(html)
+
 
 if __name__ == '__main__':
 
