@@ -35,6 +35,7 @@ RECENT = {}
 RESEARCH = {}
 PROG = {}
 RANDOM = {}
+LINUX = {}
 
 def convert_mds(source, target, link, post):
 
@@ -66,6 +67,8 @@ def gather_metadata(meta, link):
 		RESEARCH[meta['title']] = link
 	elif meta['tag'] == 'programming':
 		PROG[meta['title']] = link
+	elif meta['tag'] == 'linux':
+		LINUX[meta['title']] = link
 	else:
 		RANDOM[meta['title']] = link
 
@@ -91,7 +94,7 @@ def create_index():
 		pass
 	index = open("./templates/index.html", 'w')
 
-	recent, research, programming, random = '', '', '', ''
+	recent, research, programming, random, linux = '', '', '', '', ''
 	
 	for name, [time, link] in RECENT.iteritems():
 		recent = recent +  "[{}]({})  \r".format(name, link)
@@ -109,6 +112,9 @@ def create_index():
 		random = random + "[{}]({})  \r".format(title, link)
 	random_html = markdown.markdown(random)
 
+	for title, link in LINUX.iteritems():
+		linux = linux + "[{}]({})  \r".format(title, link)
+	linux_html = markdown.markdown(linux)
 	
 	content = '''
 {{% extends "base.html" %}}
@@ -121,10 +127,14 @@ def create_index():
 {{% block programming %}}
 {}
 {{% endblock %}}
+{{% block linux %}}
+{}
+{{% endblock %}}
 {{% block random %}}
 {}
 {{% endblock %}}
-'''.format(recent_html, research_html, programming_html, random_html)
+'''.format(recent_html, research_html, programming_html, \
+			linux_html, random_html)
 	index.write(content)
 
 	# TODO: make this work, instead of using staticjinja

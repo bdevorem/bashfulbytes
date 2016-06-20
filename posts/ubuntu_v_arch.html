@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,44 +17,39 @@
 
 	<div class="container">
 	
-	{% block header %} 
+	 
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
 			  <ul class="nav navbar-nav">
-		<a class="navbar-brand"href="/index.html">$_Bashful Bytes</a>
+		<a class="navbar-brand"href="../index.html">$_Bashful Bytes</a>
 			  </ul>
 			  <ul class="nav navbar-nav navbar-right">
-				<li><a href="/index.html">Blog</a></li>
-  				<li><a href="/pages/about.html">About</a></li>
+				<li><a href="../index.html">Blog</a></li>
+  				<li><a href="../pages/about.html">About</a></li>
 			  </ul>
 		  </div>
 		</nav>
-	{% endblock %} 
+	 
 
   	<body>
+    <div class="well well-lg">
+        
+<h2>Ubuntu vs Arch Linux</h2>
+
+<p>This will be a post on my experiences with the two 
+oeprating systems, why I chose to dual-boot the two, 
+why I prefer Arch Linux, my personal pros and cons 
+list, why Windows sucks (jk)(maybe).</p>
 
 
-	<div class="well well-lg">
-		<h2> Recent </h2>
-		{% block recent %}{% endblock %}
-		<hr style="border: 1px solid #dde4e6" />
-		<h2> Research </h2>
-		{% block research %}{% endblock %}
-		<hr style="border: .5px solid #dde4e6" />
-		<h2> Programming </h2>
-		{% block programming %}{% endblock %}
-		<hr style="border: .5px solid #dde4e6" />
-		<h2> Linux </h2>
-		{% block linux %}{% endblock %}
-		<hr style="border: .5px solid #dde4e6" />
-		<h2> Random </h2>
-		{% block random %}{% endblock %}
-	</div>
-      	{% block footer %}
-    		<footer class="footer">
+    </div>
+	
+	<footer class="footer">
+      		
       			<center>&copy; Breanna Devore-McDonald. Built with <a href="https://www.python.org/">Python</a>. June 2016</center>
-    		</footer>
-	  	{% endblock %}
+	  		
+    	</footer>
+
   	</body>
 	</div>
 </html>
