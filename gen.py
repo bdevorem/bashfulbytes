@@ -94,35 +94,59 @@ def create_index():
 	recent, research, programming, random = '', '', '', ''
 	
 	for name, [time, link] in RECENT.iteritems():
-		recent = recent +  "[{}]({})  \r".format(name, link)
+		recent = recent +  "<td>[{}]({})</td>  \r".format(name, link)
 	recent_html = markdown.markdown(recent)
 
 	for title, link in RESEARCH.iteritems():
-		research = research + "[{}]({})  \r".format(title, link)
+		research = research + "<td>[{}]({})</td>  \r".format(title, link)
 	research_html = markdown.markdown(research)
 
 	for title, link in PROG.iteritems():
-		programming = programming + "[{}]({})  \r".format(title, link)
+		programming = programming + "<td>[{}]({})</td>  \r".format(title, link)
 	programming_html = markdown.markdown(programming)
 
 	for title, link in RANDOM.iteritems():
-		random = random + "[{}]({})  \r".format(title, link)
+		random = random + "<td>[{}]({})</td>  \r".format(title, link)
 	random_html = markdown.markdown(random)
 
 	
 	content = '''
 {{% extends "base.html" %}}
 {{% block recent %}}
+<table class="table table-striped table-hover ">
+  <tbody>
+    <tr>
 {}
+	</tr>
+  </tbody>
+</table>
 {{% endblock %}}
 {{% block research %}}
+<table class="table table-striped table-hover ">
+  <tbody>
+    <tr>
 {}
+	</tr>
+  </tbody>
+</table>
 {{% endblock %}}
 {{% block programming %}}
+<table class="table table-striped table-hover ">
+  <tbody>
+	<tr>
 {}
+	</tr>
+  </tbody>
+</table>
 {{% endblock %}}
 {{% block random %}}
+<table class="table table-striped table-hover ">
+  <tbody>
+	<tr>	
 {}
+	</tr>
+  </tbody>
+</table>
 {{% endblock %}}
 '''.format(recent_html, research_html, programming_html, random_html)
 	index.write(content)
