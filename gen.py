@@ -23,16 +23,20 @@ from jinja2.environment import Environment
 
 # TODO: add next/previous posts on each page
 
-SRC_PATH = "./posts_md"
-TARGET_PATH = "./posts/templates"
-LINK = "./posts/"
+SRC_PATH_POST = "./posts_md"
+TARGET_PATH_POST = "./posts/templates"
+LINK_POST = "./posts/"
+
+SRC_PATH_PAGE = "./pages_md"
+TARGET_PATH_PAGE = "./pages/templates"
+LINK_PAGE = "./pages/"
 
 RECENT = {}
 RESEARCH = {}
 PROG = {}
 RANDOM = {}
 
-def convert_mds(source, target):
+def convert_mds(source, target, link, post):
 
 	listing = os.listdir(source)
 	for infile in listing:
@@ -40,12 +44,13 @@ def convert_mds(source, target):
 		filename, fileext = os.path.splitext(infile)
 		
 		outfilepath = os.path.join(target, "{}.html".format(filename))
-		link =  os.path.join(LINK, "{}.html".format(filename))
+		outlink =  os.path.join(link, "{}.html".format(filename))
 		outfile = open(outfilepath, 'w')
 
 		output = markdown_path(filepath, extras=['metadata'])
-		gather_metadata(output.metadata, link)
-	
+		
+		if post:
+			gather_metadata(output.metadata, outlink)
 		
 		content = '''
 {{% extends "base.html" %}}
@@ -137,7 +142,8 @@ def render_jinja():
 
 if __name__ == '__main__':
 
-	convert_mds(SRC_PATH, TARGET_PATH)
+	convert_mds(SRC_PATH_POST, TARGET_PATH_POST, LINK_POST, True)
+	convert_mds(SRC_PATH_PAGE, TARGET_PATH_PAGE, LINK_PAGE, False)
 	create_index()
 	render_jinja()
 	#for k, v in RECENT.iteritems():
