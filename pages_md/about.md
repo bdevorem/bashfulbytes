@@ -1,8 +1,8 @@
-## Hello!
+# Hello!
 My name is Breanna Devore-McDonald and you have made your way
 to my personal weblog.  
 
-## Why Blog?
+# Why Blog?
 Amidst my grad school search, I have come across various weblogs
 of computer scientists in industry, research, and academia. Every 
 single one has aided my search and/or education in one way or another,
@@ -14,7 +14,7 @@ scientists are behind all the knowledge, and what they do in their
 day-to-day life. I realized, that's exactly where I want to be, so 
 why not start acting like it now? Surprise! I am now a blogger.
 
-## About Me
+# About Me
 <img class="img-circle" style="float: right;" src="/static/teek.jpg" width="225">
 I am a rising 4<sup>th</sup> year computer science student at
 the [University of Notre Dame](https://cse.nd.edu) and, you 
@@ -40,6 +40,41 @@ analyzing thought and and the amelioration of thought systems,
 which altogether forms a field of studying the beauty of computer
 science.
 
+# Contact Info
+
+<div class="row featurette">
+  <div class="col-md-6 text-left">
+   <h4>Email</h4>
+   <address>
+    <a href="mailto:#"> bdevorem@nd.edu</a><br>
+    <a href="mailto:#"> breannamcd11@gmail.com</a><br>
+    <a href="mailto:#"> br33zyxr@gmail.com</a><br>
+   </address>
+ </div>
+ <div class="col-md-6 text-left">
+  <h4>Snail Mail</h4>
+   <address>
+    <strong>Breanna Devore-McDonald</strong><br>
+    211 Lewis Hall<br>
+    Notre Dame, IN 46556<br>
+   </address>
+  </div>
+</div>
+
+# Links
+  
+###[Github](https://github.com/bdevorem/)
+Here, you will find some of my coding projects, including
+[this blog](https://github.com/bdevorem/bdevorem.github.io) 
+and my [personal website](http://bdevorem.herokuapp.com/).  
+  
+###[Bitbucket](https://bitbucket.org/bdevorem)  
+Here, you probably won't find any coding projects. Private
+repostitories are sometimes nice, too.  
+  
+###[LinkedIn](https://www.linkedin.com/in/bdevorem)  
+Here, you will find my professional webpage. Don't be alarmed,
+it still has some character to it.  
 
 
 
