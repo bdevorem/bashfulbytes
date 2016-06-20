@@ -146,6 +146,5 @@ if __name__ == '__main__':
 	convert_mds(SRC_PATH_PAGE, TARGET_PATH_PAGE, LINK_PAGE, False)
 	create_index()
 	render_jinja()
-	#for k, v in RECENT.iteritems():
-	#	print k + '-->' + str(v)
+
 
