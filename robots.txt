@@ -1,4 +1,3 @@
-Sitemap: https://bdevorem.github.io/sitemapindex.xml
 
 User-Agent: *
 Host: bdevorem.github.io
