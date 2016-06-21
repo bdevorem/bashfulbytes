@@ -22,6 +22,7 @@ from jinja2.environment import Environment
 # ---
 
 # TODO: add next/previous posts on each page
+# TODO: add syntax highlighting for code posts
 
 SRC_PATH_POST = "./posts_md"
 TARGET_PATH_POST = "./posts/templates"
@@ -31,11 +32,7 @@ SRC_PATH_PAGE = "./pages_md"
 TARGET_PATH_PAGE = "./pages/templates"
 LINK_PAGE = "./pages/"
 
-RECENT = {}
-RESEARCH = {}
-PROG = {}
-RANDOM = {}
-LINUX = {}
+RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX = ({},)*5
 
 def convert_mds(source, target, link, post):
 
@@ -66,7 +63,7 @@ def gather_metadata(meta, link):
 	if meta['tag'] == 'research':
 		RESEARCH[meta['title']] = link
 	elif meta['tag'] == 'programming':
-		PROG[meta['title']] = link
+		PROGRAMMING[meta['title']] = link
 	elif meta['tag'] == 'linux':
 		LINUX[meta['title']] = link
 	else:
@@ -94,28 +91,20 @@ def create_index():
 		pass
 	index = open("./templates/index.html", 'w')
 
-	recent, research, programming, random, linux = '', '', '', '', ''
-	
+	recent, research, programming, random, linux = ('',)*5
+	recent_html, research_html, programming_html, random_html, linux_html = ('',)*5
+
 	for name, [time, link] in RECENT.iteritems():
 		recent = recent +  "[{}]({})  \r".format(name, link)
 	recent_html = markdown.markdown(recent)
 
-	for title, link in RESEARCH.iteritems():
-		research = research + "[{}]({})  \r".format(title, link)
-	research_html = markdown.markdown(research)
+	for tag in ['RESEARCH', 'PROGRAMMING', 'RANDOM', 'LINUX']:
+		md = locals()[tag.lower()]
+		for title, link in globals()[tag].iteritems():
+			md = md +  "[{}]({})  \r".format(title, link)
+		html = locals()["{}_html".format(tag.lower())]
+		html = markdown.markdown(md)
 
-	for title, link in PROG.iteritems():
-		programming = programming + "[{}]({})  \r".format(title, link)
-	programming_html = markdown.markdown(programming)
-
-	for title, link in RANDOM.iteritems():
-		random = random + "[{}]({})  \r".format(title, link)
-	random_html = markdown.markdown(random)
-
-	for title, link in LINUX.iteritems():
-		linux = linux + "[{}]({})  \r".format(title, link)
-	linux_html = markdown.markdown(linux)
-	
 	content = '''
 {{% extends "base.html" %}}
 {{% block recent %}}
@@ -146,14 +135,15 @@ def create_index():
 	#index.write(html)
 
 def render_jinja():
-		os.system("staticjinja build")
-		os.system("cd posts/ && staticjinja build")
-		os.system("cd pages/ && staticjinja build")
+	for cmd in ["staticjinja build", "cd posts/ && staticjinja build", \
+			"cd pages/ && staticjinja build"]:
+		os.system(cmd)
 
 if __name__ == '__main__':
 
-	convert_mds(SRC_PATH_POST, TARGET_PATH_POST, LINK_POST, True)
-	convert_mds(SRC_PATH_PAGE, TARGET_PATH_PAGE, LINK_PAGE, False)
+	for params in [[SRC_PATH_POST, TARGET_PATH_POST, LINK_POST, True], \
+			[SRC_PATH_PAGE, TARGET_PATH_PAGE, LINK_PAGE, False]]:
+		convert_mds(*params)
 	create_index()
 	render_jinja()
 
