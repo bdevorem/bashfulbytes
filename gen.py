@@ -34,7 +34,7 @@ LINK_PAGE = "./pages/"
 
 RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX = ({},)*5
 
-def convert_mds(source, target, link, post):
+def convert_mds(source, target, link, yaml):
 
 	listing = os.listdir(source)
 	for infile in listing:
@@ -47,7 +47,7 @@ def convert_mds(source, target, link, post):
 
 		output = markdown_path(filepath, extras=['metadata'])
 		
-		if post:
+		if yaml:
 			gather_metadata(output.metadata, outlink)
 		
 		content = '''
@@ -60,14 +60,13 @@ def convert_mds(source, target, link, post):
 		outfile.close()
 
 def gather_metadata(meta, link):
-	if meta['tag'] == 'research':
-		RESEARCH[meta['title']] = link
-	elif meta['tag'] == 'programming':
-		PROGRAMMING[meta['title']] = link
-	elif meta['tag'] == 'linux':
-		LINUX[meta['title']] = link
-	else:
-		RANDOM[meta['title']] = link
+
+	tags = ['research', 'programming', 'linux']
+	for tag in tags:
+		if meta['tag'] in tags:
+			globals()[tag.upper()][meta['title']] = link
+		else:
+			RANDOM[meta['title']] = link
 
 	dt = [int(d) for d in meta['date'].split()]
 	meta['date'] = date(dt[0], dt[1], dt[2])
