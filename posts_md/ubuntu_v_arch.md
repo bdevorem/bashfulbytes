@@ -9,7 +9,7 @@ tag: linux
   
   
 This will be a post on my experiences with the two 
-oeprating systems, why I chose to dual-boot the two, 
+operating systems, why I chose to dual-boot the two, 
 why I prefer Arch Linux, my personal pros and cons 
 list, why Windows sucks (jk)(maybe).
  

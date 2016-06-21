@@ -31,11 +31,7 @@ SRC_PATH_PAGE = "./pages_md"
 TARGET_PATH_PAGE = "./pages/templates"
 LINK_PAGE = "./pages/"
 
-RECENT = {}
-RESEARCH = {}
-PROGRAMMING = {}
-RANDOM = {} 
-LINUX = {}
+RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX = ({} for i in range(5))
 
 def convert_mds(source, target, link, yaml):
 
@@ -110,11 +106,11 @@ def create_index():
 {{% endblock %}}'''.format(tag.lower(), markdown.markdown(md))
 
 	index.write(content)
-	print content
 
 def render_jinja():
-	for cmd in ["staticjinja build", "cd posts/ && staticjinja build", \
-			"cd pages/ && staticjinja build"]:
+	for cmd in ["staticjinja build > /dev/null 2>&1", \
+			"cd posts/ && staticjinja build > /dev/null 2>&1", \
+			"cd pages/ && staticjinja build > /dev/null 2>&1"]:
 		os.system(cmd)
 
 	# TODO: make this work, instead of using staticjinja

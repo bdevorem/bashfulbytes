@@ -1,7 +1,7 @@
 ---
 title: My Experiences as an Undergraduate TA
 date: 2016 6 19
-tag: random
+tag: education
 ---
 
 
