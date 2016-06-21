@@ -2,6 +2,16 @@
 # Static site generator
 # Author: Breanna Devore-McDonald
 
+# yaml front matter ex.
+# ---
+# title:
+# date:
+# tag:
+# ---
+
+# TODO: add next/previous posts on each page
+# TODO: add syntax highlighting for code posts
+
 import os
 import sys
 import yaml
@@ -12,17 +22,6 @@ from datetime import date
 import jinja2
 from jinja2 import FileSystemLoader
 from jinja2.environment import Environment
-
-
-# yaml front matter ex.
-# ---
-# title:
-# date:
-# tag:
-# ---
-
-# TODO: add next/previous posts on each page
-# TODO: add syntax highlighting for code posts
 
 SRC_PATH_POST = "./posts_md"
 TARGET_PATH_POST = "./posts/templates"
@@ -91,52 +90,33 @@ def create_index():
 	index = open("./templates/index.html", 'w')
 
 	recent, research, programming, random, linux = ('',)*5
-	recent_html, research_html, programming_html, random_html, linux_html = ('',)*5
-
-	for name, [time, link] in RECENT.iteritems():
-		recent = recent +  "[{}]({})  \r".format(name, link)
-	recent_html = markdown.markdown(recent)
-
-	for tag in ['RESEARCH', 'PROGRAMMING', 'RANDOM', 'LINUX']:
+	content = '{% extends "base.html" %}'
+	
+	for tag in ['RECENT', 'RESEARCH', 'PROGRAMMING', 'RANDOM', 'LINUX']:
 		md = locals()[tag.lower()]
-		for title, link in globals()[tag].iteritems():
-			md = md +  "[{}]({})  \r".format(title, link)
-		html = locals()["{}_html".format(tag.lower())]
-		html = markdown.markdown(md)
 
-	content = '''
-{{% extends "base.html" %}}
-{{% block recent %}}
+		if tag == 'RECENT':
+			for title, [time, link] in globals()[tag].iteritems():
+				md = md +  "[{}]({})  \r".format(title, link)
+		else:
+			for title, link in globals()[tag].iteritems():
+				md = md +  "[{}]({})  \r".format(title, link)
+		content = content + '''
+{{% block {} %}}
 {}
-{{% endblock %}}
-{{% block research %}}
-{}
-{{% endblock %}}
-{{% block programming %}}
-{}
-{{% endblock %}}
-{{% block linux %}}
-{}
-{{% endblock %}}
-{{% block random %}}
-{}
-{{% endblock %}}
-'''.format(recent_html, research_html, programming_html, \
-			linux_html, random_html)
+{{% endblock %}}'''.format(tag.lower(), markdown.markdown(md))
+
 	index.write(content)
-
-	# TODO: make this work, instead of using staticjinja
-	#env = Environment(loader=FileSystemLoader('.'))
-	#template = env.get_template("./templates/index_template.html")
-	#print template
-	#html = template.render(title="dg")
-	#print html
-	#index.write(html)
 
 def render_jinja():
 	for cmd in ["staticjinja build", "cd posts/ && staticjinja build", \
 			"cd pages/ && staticjinja build"]:
 		os.system(cmd)
+
+	# TODO: make this work, instead of using staticjinja
+	#env = Environment(loader=FileSystemLoader('.'))
+	#template = env.get_template("./templates/index_template.html")
+	#html = template.render(title="dg")
 
 if __name__ == '__main__':
 
