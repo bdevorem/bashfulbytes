@@ -67,7 +67,7 @@ def gather_metadata(meta, link):
 		RANDOM[meta['title']] = link
 
 	dt = [int(d) for d in meta['date'].split()]
-	meta['date'] = date(dt[0], dt[1], dt[2])
+	meta['date'] = date(*dt)
 
 	oldest_time = meta['date']
 	name = meta['title']
