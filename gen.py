@@ -31,7 +31,11 @@ SRC_PATH_PAGE = "./pages_md"
 TARGET_PATH_PAGE = "./pages/templates"
 LINK_PAGE = "./pages/"
 
-RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX = ({},)*5
+RECENT = {}
+RESEARCH = {}
+PROGRAMMING = {}
+RANDOM = {} 
+LINUX = {}
 
 def convert_mds(source, target, link, yaml):
 
@@ -61,11 +65,10 @@ def convert_mds(source, target, link, yaml):
 def gather_metadata(meta, link):
 
 	tags = ['research', 'programming', 'linux']
-	for tag in tags:
-		if meta['tag'] in tags:
-			globals()[tag.upper()][meta['title']] = link
-		else:
-			RANDOM[meta['title']] = link
+	if meta['tag'] in tags:
+		globals()[meta['tag'].upper()][meta['title']] = link
+	else:
+		RANDOM[meta['title']] = link
 
 	dt = [int(d) for d in meta['date'].split()]
 	meta['date'] = date(dt[0], dt[1], dt[2])
@@ -92,9 +95,9 @@ def create_index():
 	recent, research, programming, random, linux = ('',)*5
 	content = '{% extends "base.html" %}'
 	
-	for tag in ['RECENT', 'RESEARCH', 'PROGRAMMING', 'RANDOM', 'LINUX']:
-		md = locals()[tag.lower()]
-
+	for tag in ['RECENT', 'RESEARCH', 'PROGRAMMING', 'LINUX', 'RANDOM']:
+		md = locals()[tag.lower()] = ''
+		
 		if tag == 'RECENT':
 			for title, [time, link] in globals()[tag].iteritems():
 				md = md +  "[{}]({})  \r".format(title, link)
@@ -107,6 +110,7 @@ def create_index():
 {{% endblock %}}'''.format(tag.lower(), markdown.markdown(md))
 
 	index.write(content)
+	print content
 
 def render_jinja():
 	for cmd in ["staticjinja build", "cd posts/ && staticjinja build", \
