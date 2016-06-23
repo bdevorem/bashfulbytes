@@ -1339,7 +1339,7 @@ mark,
   text-transform: capitalize;
 }
 .text-muted {
-  color: #ffffff;
+  color: #b4bcc2;
 }
 .text-primary {
   color: #2c3e50;
@@ -2259,7 +2259,7 @@ table {
 caption {
   padding-top: 8px;
   padding-bottom: 8px;
-  color: #ffffff;
+  color: #b4bcc2;
   text-align: left;
 }
 th {
@@ -3562,7 +3562,7 @@ tbody.collapse.in {
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
-  color: #7b8a8b;
+  color: #ffffff;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
