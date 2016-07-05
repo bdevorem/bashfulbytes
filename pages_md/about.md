@@ -43,30 +43,27 @@ science.
 # Contact Info
 
 <div class="row featurette">
-  <div class="col-md-6 text-left">
-   <h4>Email</h4>
+  <div class="col-md-4 text-left">
+   <h4>Email</h4><a href="/publickey.asc">(pgp)</a>
    <address>
-    <a href="mailto:#"> bdevorem@nd.edu</a><br>
-    <a href="mailto:#"> breannamcd11@gmail.com</a><br>
-    <a href="mailto:#"> br33zyxr@gmail.com</a><br>
+    <a href="mailto:bdevorem@nd.edu"> bdevorem [at] nd [dot] edu</a><br>
+    <a href="mailto:breannamcd11@gmail.com"> breannamcd11 [at] gmail [dot] com</a><br>
+    <a href="mailto:br33zyxr@gmail.com"> br33zyxr [at] gmail [dot] com</a><br>
    </address>
  </div>
- <div class="col-md-6 text-left">
+ <div class="col-md-4 text-left">
   <h4>Snail Mail</h4>
    <address>
     <strong>Breanna Devore-McDonald</strong><br>
     211 Lewis Hall<br>
     Notre Dame, IN 46556<br>
    </address>
-  </div>
+  </div> 
+ <div class="col-md-4 text-left">
+  <h4>Links</h4>
+ 	<i class="fa-github" href="https://github.com/bdevorem"></i>
+ </div>
 </div>
-
-# Links
-  
-###[Github](https://github.com/bdevorem/)
-Here, you will find some of my coding projects, including
-[this blog](https://github.com/bdevorem/bdevorem.github.io) 
-and my [personal website](http://bdevorem.herokuapp.com/).  
   
 ###[Bitbucket](https://bitbucket.org/bdevorem)  
 Here, you probably won't find any coding projects. Private

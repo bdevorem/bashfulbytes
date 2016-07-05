@@ -124,6 +124,6 @@ if __name__ == '__main__':
 			[SRC_PATH_PAGE, TARGET_PATH_PAGE, LINK_PAGE, False]]:
 		convert_mds(*params)
 	create_index()
-	render_jinja()
+	#render_jinja()
 
 
