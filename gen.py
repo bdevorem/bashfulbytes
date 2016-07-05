@@ -108,11 +108,7 @@ def create_index():
 	index.write(content)
 
 def render_jinja():
-	for cmd in ["staticjinja build > /dev/null 2>&1", \
-			"cd posts/ && staticjinja build > /dev/null 2>&1", \
-			"cd pages/ && staticjinja build > /dev/null 2>&1"]:
-		os.system(cmd)
-
+	pass
 	# TODO: make this work, instead of using staticjinja
 	#env = Environment(loader=FileSystemLoader('.'))
 	#template = env.get_template("./templates/index_template.html")

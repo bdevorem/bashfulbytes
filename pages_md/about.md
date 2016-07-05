@@ -44,7 +44,7 @@ science.
 
 <div class="row featurette">
   <div class="col-md-4 text-left">
-   <h4>Email</h4><a href="/publickey.asc">(pgp)</a>
+   <h4>Email <a href="/publickey.asc">(pgp)</a></h4>
    <address>
     <a href="mailto:bdevorem@nd.edu"> bdevorem [at] nd [dot] edu</a><br>
     <a href="mailto:breannamcd11@gmail.com"> breannamcd11 [at] gmail [dot] com</a><br>
@@ -61,17 +61,13 @@ science.
   </div> 
  <div class="col-md-4 text-left">
   <h4>Links</h4>
- 	<i class="fa-github" href="https://github.com/bdevorem"></i>
+   <span class="fa fa-github" href="https://github.com/bdevorem"></span>
+   <span class="fa fa-bitbucket" href="https://bitbucket.org/bdevorem"></span>
+   <span class="fa fa-linkedin-square" href="https://www.linkedin.com/in/bdevorem"></span>
  </div>
 </div>
   
-###[Bitbucket](https://bitbucket.org/bdevorem)  
-Here, you probably won't find any coding projects. Private
-repostitories are sometimes nice, too.  
   
-###[LinkedIn](https://www.linkedin.com/in/bdevorem)  
-Here, you will find my professional webpage. Don't be alarmed,
-it still has some character to it.  
 
 
 
