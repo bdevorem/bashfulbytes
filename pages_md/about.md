@@ -5,24 +5,29 @@ to my personal weblog.
 # Why Blog?
 Amidst my grad school search, I have come across various weblogs
 of computer scientists in industry, research, and academia. Every 
-single one has aided my search and/or education in one way or another,
-and reading these blogs has become a kind of relaxation for me. The
-months leading to grad school applications form a stressful time, and
-so I willingly open my arms to any method of relaxing.  
-Reading weblogs also got me thinking about who the busy computer 
-scientists are behind all the knowledge, and what they do in their
-day-to-day life. I realized, that's exactly where I want to be, so 
-why not start acting like it now? Surprise! I am now a blogger.
+blog I've found shows one key thing in common between the authors: 
+passion. I have seen passion for learning and passion for research,
+and sometimes I've seen passion for teaching others and advancing
+society as well. As I begin my career in research, my own passion 
+and excitement is abundant, and I just can't get enough of anything 
+that has to do with computer science. So, why not take the cue from 
+the computer-scientists-slash-bloggers I've come to look up to? 
+Surprise! I am now a blogger, too.
 
 # About Me
 <img class="img-circle" style="float: right;" src="/static/teek.jpg" width="225">
 I am a rising 4<sup>th</sup> year computer science student at
-the [University of Notre Dame](https://cse.nd.edu) and, you 
-guessed it, I will be applying to graduate programs in the Fall.
-Broadly, my interests lie in programming language research. 
-Oftentimes, in undergraduate education (and possibly elsewhere), 
-I think it's easy to 
-focus on _how to get things done_, rather than _why things work_. 
+the [University of Notre Dame](https://cse.nd.edu) and, I will 
+be applying to graduate programs this Fall.
+Broadly, my interests lie in programming languages research. I 
+am interested in both the systems side and theory side of PL: 
+run-time systems (especially garbage collection), 
+memory management, security of systems, theory of computation, 
+compiler construction and optimization, type systems, 
+and DSLs. Someday soon I'll narrow this down.
+  
+Oftentimes, I think it's easy to 
+focus on _getting things done_, rather than _why things work_. 
 Computer science is beautiful. The field is handcrafted, 
 engineered from the fundamentals of mathematics to essentially
 concretize, model, and optimize thought.
@@ -61,9 +66,9 @@ science.
   </div> 
  <div class="col-md-3 text-left">
   <h4>Links</h4>
-   <a href="https://github.com/bdevorem"><i class="fa fa-github"></i></a>
-   <a href="https://bitbucket.org/bdevorem"><i class="fa fa-bitbucket"></i></a>
-   <a href="https://www.linkedin.com/in/bdevorem"><i class="fa fa-linkedin-square"></i></a>
+   <a href="https://github.com/bdevorem"><i class="fa fa-github fa-lg"></i></a>
+   <a href="https://bitbucket.org/bdevorem"><i class="fa fa-bitbucket fa-lg"></i></a>
+   <a href="https://www.linkedin.com/in/bdevorem"><i class="fa fa-linkedin-square fa-lg"></i></a>
  </div>
 </div>
   
