@@ -43,7 +43,7 @@ science.
 # Contact Info
 
 <div class="row featurette">
-  <div class="col-md-4 text-left">
+  <div class="col-md-6 text-left">
    <h4>Email <a href="/publickey.asc">(pgp)</a></h4>
    <address>
     <a href="mailto:bdevorem@nd.edu"> bdevorem [at] nd [dot] edu</a><br>
@@ -59,9 +59,9 @@ science.
     Notre Dame, IN 46556<br>
    </address>
   </div> 
- <div class="col-md-4 text-left">
+ <div class="col-md-2 text-left">
   <h4>Links</h4>
-   <span class="fa fa-github" href="https://github.com/bdevorem"></span>
+   <i class="fa fa-github" href="https://github.com/bdevorem"></i>
    <span class="fa fa-bitbucket" href="https://bitbucket.org/bdevorem"></span>
    <span class="fa fa-linkedin-square" href="https://www.linkedin.com/in/bdevorem"></span>
  </div>
