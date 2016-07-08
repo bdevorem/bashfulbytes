@@ -21,9 +21,9 @@ the [University of Notre Dame](https://cse.nd.edu) and, I will
 be applying to graduate programs this Fall.
 Broadly, my interests lie in programming languages research. I 
 am interested in both the systems side and theory side of PL: 
-run-time systems (especially garbage collection), 
-memory management, security of systems, theory of computation, 
-compiler construction and optimization, type systems, 
+run-time systems (especially garbage collection and all other
+aspects of memory management), security of systems, theory of 
+computation, compiler construction and optimization, type systems, 
 and DSLs. Someday soon I'll narrow this down.
   
 Oftentimes, I think it's easy to 
@@ -66,9 +66,9 @@ science.
   </div> 
  <div class="col-md-3 text-left">
   <h4>Links</h4>
-   <a href="https://github.com/bdevorem"><i class="fa fa-github fa-lg"></i></a>
-   <a href="https://bitbucket.org/bdevorem"><i class="fa fa-bitbucket fa-lg"></i></a>
-   <a href="https://www.linkedin.com/in/bdevorem"><i class="fa fa-linkedin-square fa-lg"></i></a>
+   <a href="https://github.com/bdevorem"><i class="fa fa-github fa-2x"></i></a>
+   <a href="https://bitbucket.org/bdevorem"><i class="fa fa-bitbucket fa-2x"></i></a>
+   <a href="https://www.linkedin.com/in/bdevorem"><i class="fa fa-linkedin-square fa-2x"></i></a>
  </div>
 </div>
   
