@@ -23,6 +23,9 @@ import jinja2
 from jinja2 import FileSystemLoader
 from jinja2.environment import Environment
 
+reload(sys)  
+sys.setdefaultencoding('utf8')
+
 SRC_PATH_POST = "./posts_md"
 TARGET_PATH_POST = "./posts/templates"
 LINK_POST = "./posts/"
@@ -37,26 +40,27 @@ def convert_mds(source, target, link, yaml):
 
 	listing = os.listdir(source)
 	for infile in listing:
-		filepath = os.path.join(source, infile)
-		filename, fileext = os.path.splitext(infile)
-		
-		outfilepath = os.path.join(target, "{}.html".format(filename))
-		outlink =  os.path.join(link, "{}.html".format(filename))
-		outfile = open(outfilepath, 'w')
+		if infile[0] != '.':
+			filepath = os.path.join(source, infile)
+			filename, fileext = os.path.splitext(infile)
+			
+			outfilepath = os.path.join(target, "{}.html".format(filename))
+			outlink =  os.path.join(link, "{}.html".format(filename))
+			outfile = open(outfilepath, 'w')
 
-		output = markdown_path(filepath, extras=['metadata'])
-		
-		if yaml:
-			gather_metadata(output.metadata, outlink)
-		
-		content = '''
+			output = markdown_path(filepath, extras=['metadata'])
+			
+			if yaml:
+				gather_metadata(output.metadata, outlink)
+			
+			content = '''
 {{% extends "base.html" %}}
 {{% block content %}}
 {}
 {{% endblock %}}
 '''.format(output)
-		outfile.write(content)
-		outfile.close()
+			outfile.write(content)
+			outfile.close()
 
 def gather_metadata(meta, link):
 
