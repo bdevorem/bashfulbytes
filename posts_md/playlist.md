@@ -36,8 +36,8 @@ Kooks and Hozier. Can't forget the soulful Rationale, as well!
 [Realiti](https://www.youtube.com/watch?v=N9XKLqGqwLA) - Grimes  
 [Tap Out](https://www.youtube.com/watch?v=-7PINAYE4z4) - The Strokes  
 [Can't Stop](https://www.youtube.com/watch?v=BfOdWSiyWoc) - Red Hot Chili Peppers  
-[Send Me Down](https://www.youtube.com/watch?v=vMpeX0W6LTE) - Haim
-[Sedated](https://www.youtube.com/watch?v=5_JUReD3QoE) - Hozier
-[Something From Nothing](https://www.youtube.com/watch?v=VpT-6SQFx2g) - Rationale
-[Mellow Yellow](https://www.youtube.com/watch?v=NghU2kMcepQ) - Ocean Alley
+[Send Me Down](https://www.youtube.com/watch?v=vMpeX0W6LTE) - Haim  
+[Sedated](https://www.youtube.com/watch?v=5_JUReD3QoE) - Hozier  
+[Something From Nothing](https://www.youtube.com/watch?v=VpT-6SQFx2g) - Rationale  
+[Mellow Yellow](https://www.youtube.com/watch?v=NghU2kMcepQ) - Ocean Alley  
 
