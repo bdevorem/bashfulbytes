@@ -9,7 +9,9 @@ tag: programming
 ### What is a Static Site Generator?
 It's simple: a generator that yields static pages to form a 
 static site.  
+  
 I'm serious.  
+  
 Static sites are the OG of the World Wide Web. When Tim 
 Berners-Lee created the first web browser back before my 
 generation was born (always late to the party), it was 
@@ -21,14 +23,17 @@ the same was it was rendered. If you are familiar with the Web
 nowadays, it's obvious that it doesn't work like this 
 anymore, due to the demand for dynamic content and 
 the need for efficient databases.  
+  
 However, some things don't need to be dynamic. In fact, 
-some things could be called overengineered if they were 
-dynamic, like this blog. There's no need for my content 
-to be rendered dynamically. The only changes are 
-going to be new blog posts, I might eventually run out 
+some things could be considered overengineered if they were 
+dynamic. Take for example this blog: there's no need for 
+my content to be rendered dynamically. Most of the content will
+not change often, so there's no need to make dynamic decisions 
+come delivery time. I might eventually run out 
 of disk space for my files, but then I'll just migrate 
 the site to a VPS. It just makes the most sense to keep 
 it simple (,stupid).  
+  
 So what is a static site generator? At the most basic 
 level, it's a tool that takes content in the form of 
 files (typically) and generates a file system-like 

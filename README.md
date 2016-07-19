@@ -61,3 +61,10 @@ the commits :)
 Disclaimer: this static site generator is completely tailored to
 my needs and desires. If you want to use it, feel free, but it 
 might not fulfill your needs the way it does mine.
+
+## TODO
+- [ ] Only regenerate changed files
+- [ ] Make a local server
+- [ ] Migrate to VPS
+- [ ] nginx or create own webserver?
+
