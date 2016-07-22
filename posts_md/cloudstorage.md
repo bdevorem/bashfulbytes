@@ -16,6 +16,7 @@ to the current time, where I am so close to file level storage that
 I actually have to consult an engineer that implemented some 
 major capabilities of the NetApp filers, because documentation 
 only reaches so far.  
+  
 Well, what exactly _is_ file level storage? If there's a _file_ 
 protocol, are there other protocols? Why do we need more than 
 one storage protocol? And what is this 'NetApp' filer I 

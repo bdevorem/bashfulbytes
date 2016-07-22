@@ -1,7 +1,7 @@
 ---
 title: Why Hardware Knowledge is Important in Computer Science Education
 date: 2016 6 21
-tag: education
+tag: unfinished
 ---
 
 ##Why Hardware Knowledge is Important in Computer Science Education

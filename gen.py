@@ -34,7 +34,7 @@ SRC_PATH_PAGE = "./pages_md"
 TARGET_PATH_PAGE = "./pages/templates"
 LINK_PAGE = "./pages/"
 
-RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX = ({} for i in range(5))
+RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX, UNFINISHED = ({} for i in range(6))
 
 def convert_mds(source, target, link, yaml):
 
@@ -64,7 +64,7 @@ def convert_mds(source, target, link, yaml):
 
 def gather_metadata(meta, link):
 
-	tags = ['research', 'programming', 'linux']
+	tags = ['research', 'programming', 'linux', 'unfinished']
 	if meta['tag'] in tags:
 		globals()[meta['tag'].upper()][meta['title']] = link
 	else:
@@ -92,10 +92,10 @@ def create_index():
 		pass
 	index = open("./templates/index.html", 'w')
 
-	recent, research, programming, random, linux = ('',)*5
+	recent, research, programming, random, linux, unfinished = ('',)*6
 	content = '{% extends "base.html" %}'
 	
-	for tag in ['RECENT', 'RESEARCH', 'PROGRAMMING', 'LINUX', 'RANDOM']:
+	for tag in ['RECENT', 'RESEARCH', 'PROGRAMMING', 'LINUX', 'RANDOM', 'UNFINISHED']:
 		md = locals()[tag.lower()] = ''
 		
 		if tag == 'RECENT':

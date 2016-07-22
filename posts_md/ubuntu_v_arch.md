@@ -1,7 +1,7 @@
 ---
 title: Ubuntu vs Arch Linux
 date: 2016 6 19
-tag: linux
+tag: unfinished
 ---
 
 
