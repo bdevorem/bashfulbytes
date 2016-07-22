@@ -107,10 +107,21 @@ complaints from programmers, and StaticGen says it "doesn't
 reinvent wheels, it leverages existing tools". In my 
 opinion, Nikola is pretty sweet. Example, taken straight 
 from the documentation:  
-    "DON'T READ THIS MANUAL. IF YOU NEED TO READ IT I FAILED, JUST USE THE THING."  
+```
+DON'T READ THIS MANUAL. IF YOU NEED TO READ IT I FAILED, JUST USE THE THING.
+```
 Need I say more?
 
 #### [Acrylamid](https://posativ.org/acrylamid/)
+Acrylamid is yet another generator written in Python. Acrylamid 
+is also big on metatdata, and you can use YAML-style frontmatter
+like Jekyll, or in the native format of Markdown, reST, and Pandoc. If 
+you want to use something else, you can even 
+[extend Acrylamid in 30 LoC](https://posativ.org/git/acrylamid/blob/master/acrylamid/filters/pytextile.py). 
+What's also neat? Acrylamid supports TeX hyphenation filters, 
+summarizing filters, and acronym-detection. And they're even on 
+[Freenode](http://freenode.net/), `#acrylamid`.
+
 
 ## Creating You Own Static Site Generator
 If you have a very specific goal in mind, or none of those 
