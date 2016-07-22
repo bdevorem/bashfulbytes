@@ -98,6 +98,18 @@ have an existing dynamic site that you want to make static, Pelican
 is a great choice.
 
 #### [Nikola](https://getnikola.com/)
+Another Python generator! What's even better about Nikola is that it has
+an incredibly small codebase. Going through the source is breeze, if 
+that's your style. Nikola also supports many languages for content 
+posting, but it also has incredible support for image galleries.
+It's compatible with Python 2 and 3, so there should be no 
+complaints from programmers, and StaticGen says it "doesn't 
+reinvent wheels, it leverages existing tools". In my 
+opinion, Nikola is pretty sweet. Example, taken straight 
+from the documentation:
+    "DON'T READ THIS MANUAL. IF YOU NEED TO READ IT I FAILED, JUST USE THE THING."
+Need I say more?
+
 #### [Acrylamid](https://posativ.org/acrylamid/)
 
 ## Creating You Own Static Site Generator
@@ -112,7 +124,7 @@ site generator is actually really straightforward.
 A basic generator can 
 be broken down into the following steps.  
   
-1.  Scan directory/directories for content to be generated.  
+1.  Scan source directory for content to be generated.  
   
     If you're writing your content in Markdown, for example, you would
     scan your source directory for Markdown files.
@@ -146,6 +158,7 @@ be broken down into the following steps.
     your site.  
   
 That's it. I bet you can even do all that in less than 15 lines of code.  
+  
 Of course, you can add so much more to this. For example, use the extras from 
 Python-Markdown2 to gather YAML-style front matter from your Markdown posts. 
 You can even gather timestamps for your files to create some kind of order 
