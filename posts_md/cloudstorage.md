@@ -4,7 +4,6 @@ date: 2016 6 23
 tag: research
 ---
 
-
 # Object vs Block vs File Level Storage Protocols
 
 For the past four weeks, I have been at IBM Research digging 

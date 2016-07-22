@@ -52,8 +52,17 @@ def convert_mds(source, target, link, yaml):
 			
 			if yaml:
 				gather_metadata(output.metadata, outlink)
-			
-			content = '''
+				content = '''
+{{% extends "base.html" %}}
+{{% block content %}}
+<span style="float:right;" class="label label-primary">{}</span>
+<span style="float:right;" class="label label-info">{}</span>
+{}
+{{% endblock %}}
+'''.format(output.metadata['date'], output.metadata['tag'], output)
+
+			else:			
+				content = '''
 {{% extends "base.html" %}}
 {{% block content %}}
 {}
