@@ -71,7 +71,7 @@ site generator is actually really straightforward.
 A basic generator can 
 be broken down into the following steps.  
   
-1.  Scan directory/directories for content to be generated.
+1.  Scan directory/directories for content to be generated.  
   
     If you're writing your content in Markdown, for example, you would
     scan your source directory for Markdown files.
