@@ -172,7 +172,7 @@ That's it. I bet you can even do all that in less than 15 lines of code.
   
 Of course, you can add so much more to this. For example, use the extras from 
 Python-Markdown2 to gather YAML-style front matter from your Markdown posts. 
-You can even gather timestamps for your files to create some kind of order 
+You can even gather timestamps from your files to create some kind of order 
 on your site. The sky's the limit here.  
 
 ## How This Site Was Born
@@ -246,7 +246,7 @@ It seemed like Nikola and I were meant to be, and we even had a
 two-day long love affair. You can even go back to the very first 
 commits on the Github 
 [project page](https://github.com/bdevorem/bdevorem.github.io) 
-and see all the lovely `Nikola auto commit.`'s.  
+and see all the lovely `Nikola auto commit`s.  
   
 Actually, those commits, along with some slight annoyances in 
 the configuration, are what led me to creating my own 
@@ -258,7 +258,7 @@ constricted because I couldn't customize it as easily or as
 much as I wanted to, and I didn't know the source well enough 
 to fork the project and turn it into my own. So, instead of
 spending the time getting to know the source, I decided to 
-dedicate my time to learning more about static site generators 
+dedicate my time learning more about static site generators 
 to implement *exactly* what I wanted, without limitation or
 constriction.  
   
@@ -273,18 +273,18 @@ added anywhere; unless I insert a hyperlink somewhere, pages are pretty much
 hidden, though not obscured. I write everything in
 Markdown in Vim, and save to either `posts_md/` or `pages_md/`.  
   
-The first thing my generator does is scan `posts_md` for every source post, 
+The first thing my generator does is scan `posts_md/` for every source post, 
 and converts them to HTML whilst extracting their metadata. Then, my base 
 template is applied to each post, and they all get stored in `posts/`. This 
-process is repeated for pages, minus the metadata extraction.  
+process is repeated for pages and the corresponding directories, minus the metadata extraction.  
   
 After all of that HTML is created, what's left is creating my appendix, which 
 is the index of my site. When the metadata was extracted from the posts, each 
 file was grouped into a category matching its tag, and the Recent category was
 populated with the 5 most recently-created posts. This is all created in 
-Markdown for simplicity, and then it gets converted to HTML. The base template for the 
+Markdown for simplicity and then gets converted to HTML. The base template for the 
 index page is different than the base template I use to convert the pages and 
-posts, because of the tag categories. So, this separate base template is applied 
+posts because of the tag categories. So, this separate base template is applied 
 to my HTML and the document gets written to `pages/`.  
   
 The last step is to render the Jinja templating. I wanted to make my own function 
