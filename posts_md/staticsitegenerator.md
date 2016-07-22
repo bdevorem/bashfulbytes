@@ -56,15 +56,15 @@ into when designing my site:
 Jekyll is probably the most mainstream and mature project out there at 
 this time. The documentation is really good, the community is large, and 
 there are numerous in-depth tutorials on how to build a site using Jekyll. 
-If you want to just test the waters, Jekyll is very good for the 
-beginners out there. One caveat: it's written in Ruby. Many consider that a 
+If you want to just test the waters, Jekyll is very good for 
+beginners. One caveat: it's written in Ruby. Many consider that a 
 con, but it seems like it's pretty abstracted from the user.
 
 #### [Hugo](https://gohugo.io/)
 As the name suggests, Hugo is written in Go, which isn't too common 
 among static site generators. It claims to be *extremely* fast because 
 it's optimized for speed, but it's very configurable as well. You can 
-organize your content any way you want, and you can declare your 
+organize your content any way you want and you can declare your 
 own content types. And it's even easy to use: the docs say "Hugo 
 doesn’t depend on administrative privileges, 
 databases, runtimes, interpreters or external libraries". I'm guessing 
@@ -73,14 +73,19 @@ if you're a systems person, this will be your go-to.
 #### [Hexo](https://hexo.io/)
 It seems a lot to me that Hexo is a Node version of Hugo. It 
 supports multi-threaded generating, so it's also extremely fast. 
-It seems easy to use, assuming you are familiar with Node.js and 
-Javascript. One thing about Hexo is that it's super plugin-friendly.
+It's easy to use just as well, assuming you are familiar with Node.js and 
+Javascript. Another neat thing about Hexo is that it's super plugin-friendly.
 It supports EJS, Swig, and Stylus, and the docs say 
-"you can install more plugins for Haml, Jade, and Less."
+"you can install more plugins for Haml, Jade, and Less." Hexo doesn't have 
+as big of a community as other generators, like Jekyll, but installation 
+is very easy and manageable because everything is pre-installed, so 
+Hexo is a great contender. 
 
 #### [Hyde](http://hyde.github.io/)
-So-called, 'Jekyll's evil twin' because it's written in Python, which 
-is a huge plus.
+So-called, 'Jekyll's evil twin' because it started out as a Jekyll 
+rewrite in Python. Hyde is really big on metadata to determine 
+how output is written, and it even has custom tags and filters.
+Besides this, Hyde is pretty much on par with Jekyll.
 
 #### [Pelican](http://blog.getpelican.com/)
 Also written in Python, so also a huge plus. Pelican uses Jinja 
