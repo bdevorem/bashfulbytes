@@ -52,19 +52,19 @@ you want to choose a static site generator. Well, there are
 so many options. Here are the top generators that I looked 
 into when designing my site:  
   
-### Jekyll
-### Acrylamid
-### Hugo
-### Hyde
-### Hexo
-### Nikola
-### Pelican
+#### Jekyll
+#### Acrylamid
+#### Hugo
+#### Hyde
+#### Hexo
+#### Nikola
+#### Pelican
 
 ## Creating You Own Static Site Generator
 If those don't please you, this will give a slight roadmap
 on how to create your own simple static site generator.
 
-### How This Site Was Born
+## How This Site Was Born
 If you've made it this far in the post, you've probably
 realized that this site, [BashfulBytes](http://bashfulbytes.com/),
 is indeed a static site. When I first decided I wanted to 
