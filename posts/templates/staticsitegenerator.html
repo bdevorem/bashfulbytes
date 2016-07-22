@@ -1,9 +1,9 @@
 
 {% extends "base.html" %}
 {% block content %}
-<h2>Create Your Own Static Website Generator</h2>
+<h1>Create Your Own Static Website Generator</h1>
 
-<h3>What is a Static Site Generator?</h3>
+<h2>What is a Static Site Generator?</h2>
 
 <p>It's simple: a generator that yields static pages to form a 
 static site.  </p>
@@ -13,23 +13,24 @@ static site.  </p>
 <p>Static sites are the OG of the World Wide Web. When Tim 
 Berners-Lee created the first web browser back before my 
 generation was born (always late to the party), it was 
-more or less simply a document navigator, where the documents 
+more or less simply a document navigator. Documents 
 were just files in a hierarchical file system and hyperlinks 
 led you from one document to another- just like navigating 
 a Unix-like file system. Each document's content was stored 
-the same was it was rendered. If you are familiar with the Web 
+the same way it was rendered. If you are familiar with the Web 
 nowadays, it's obvious that it doesn't work like this 
 anymore, due to the demand for dynamic content and 
 the need for efficient databases.  </p>
 
-<p>However, some things don't need to be dynamic. In fact, 
-some things could be considered overengineered if they were 
-dynamic. Take for example this blog: there's no need for 
-my content to be rendered dynamically. Most of the content will
-not change often, so there's no need to make dynamic decisions 
-come delivery time. I might eventually run out 
+<p>However, some things don't need to be dynamic. Take for 
+example this blog: there's no need for 
+my content to be rendered dynamically. Most of the content
+won't change very often, and the content that does change
+will just be new pages. I might eventually run out 
 of disk space for my files, but then I'll just migrate 
-the site to a VPS. It just makes the most sense to keep 
+the site to a VPS. No matter what, generating the HTML 
+for the page can happen way before a user first accesses
+it, in my scenario. It just makes the most sense to keep 
 it simple (,stupid).  </p>
 
 <p>So what is a static site generator? At the most basic 
@@ -42,19 +43,86 @@ content statically is generally much faster than rendering
 dynamically, and actually less vulnerable to 
 <a href="https://hackertarget.com/attacking-wordpress/">exploits</a>.</p>
 
-<h3>Choosing a Static Site Generator</h3>
+<h2>Choosing a Static Site Generator</h2>
 
-<p>Soon, this will talk through the differences and similarities
-of the major static site generators of the current world.</p>
+<p>So you've decided you want to make a static site and now
+you want to choose a static site generator. Well, there are
+so many options. Here are the top generators that I looked 
+into when designing my site:  </p>
 
-<h3>Creating You Own Static Site Generator</h3>
+<h3>Jekyll</h3>
+
+<h3>Acrylamid</h3>
+
+<h3>Hugo</h3>
+
+<h3>Hyde</h3>
+
+<h3>Hexo</h3>
+
+<h3>Nikola</h3>
+
+<h3>Pelican</h3>
+
+<h2>Creating You Own Static Site Generator</h2>
 
 <p>If those don't please you, this will give a slight roadmap
 on how to create your own simple static site generator.</p>
 
 <h3>How This Site Was Born</h3>
 
-<p>This will eventually explain the steps it took for me to get to
-this blog, and how I created it and why.</p>
+<p>If you've made it this far in the post, you've probably
+realized that this site, <a href="http://bashfulbytes.com/">BashfulBytes</a>,
+is indeed a static site. When I first decided I wanted to 
+create a blog, my mind went straight to 
+<a href="https://www.djangoproject.com/">Django</a> or 
+<a href="http://flask.pocoo.org/">Flask</a>,
+since I am familiar with those frameworks. But I wanted 
+something simpler; I didn't need any bells or whistles, or to
+overcomplicate the goal I had in mind. I remembered hearing 
+the buzzword 'static site generator' from a class I TA'd for,
+where a much-coveted 'Guru Point' was awarded any student 
+that created a blog or online portfolio using a static site 
+generator. I wasn't familiar with static sites or generators 
+at that point, so before I hopped on the bandwagon, I 
+took some time to conduct thorough 
+research. I didn't want to commit to something that 
+wasn't exactly what I wanted (some foreshadowing here...).</p>
+
+<p>My first step was to look into how my 
+favorite computer science bloggers manage their blogs. 
+I happened across a Quora question about <a href="https://www.quora.com/How-do-I-create-a-simple-and-clean-blog-like-matt-might-net">how to achieve 
+Matt Might-style blog greatness</a>, to which Matt Might 
+answered himself. I really liked his strategy:  </p>
+
+<blockquote>
+  <ol>
+  <li><p>Don't engineer myself into a corner. I opt for more abstraction
+  and control via shell scripts wherever possible, and I don't 
+  make decisions that are going to be hard to undo later.</p></li>
+  <li><p>Don't over-engineer it.  I opt for the simplest combination 
+  of existing technologies to add the functionality I want.</p></li>
+  </ol>
+</blockquote>
+
+<p>This solidified my decision to use a static site generator.  </p>
+
+<p>I looked into the most 
+popular generators on <a href="https://www.staticgen.com/">StaticGen</a>,
+(because I am a proponent of open source projects) and 
+came across all the previously mentioned generators. I 
+quickly narrowed it down to the projects written in 
+Python, because duh. I was left with Pelican, Hyde, Acrylamid,
+and Nikola. I did a brief peek into all of the source code 
+first, then I decided to narrow it down to two and then get 
+my hands dirty.</p>
+
+<p>Acrylamid was a faster descendant of Pelican, so I 
+kicked Pelican off the list. Hyde was just too 
+mainstream for me, so I kicked it off the list. Not 
+all decisions need to have substantial reasoning. Plus, 
+Nikola was named after Nikola Tesla, and Acrylamid has 
+amazingly sassy documentation, so it seemed like those 
+were meant to be my final picks.  </p>
 
 {% endblock %}
