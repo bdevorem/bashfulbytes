@@ -91,8 +91,8 @@ be broken down into the following steps.
     because of its awesome 
     [inheritance feature](http://jinja.pocoo.org/docs/dev/templates/#template-inheritance).
     With Jinja2, you can create a base template consisting of the general 
-    skelton HTML you want your pages/posts to have. You can import your CSS and 
-    set up your header, footer, columms, divs, everything. Then, to add your 
+    skeleton HTML you want your pages/posts to have. You can import your CSS and 
+    set up your header, footer, columns, divs, everything. Then, to add your 
     content, just follow the 
     [super simple](http://jinja.pocoo.org/docs/dev/templates/#child-template) 
     syntax for inheritance. There's a lot more to Jinja than this, but we're 
@@ -108,7 +108,7 @@ be broken down into the following steps.
 That's it. I bet you can even do all that in less than 15 lines of code.  
 Of course, you can add so much more to this. For example, use the extras from 
 Python-Markdown2 to gather YAML-style front matter from your Markdown posts. 
-You can even gather timstamps for your files to create some kind of order 
+You can even gather timestamps for your files to create some kind of order 
 on your site. The sky's the limit here.  
 
 ## How This Site Was Born
@@ -128,7 +128,8 @@ generator. I wasn't familiar with static sites or generators
 at that point, so before I hopped on the bandwagon, I 
 took some time to conduct thorough 
 research. I didn't want to commit to something that 
-wasn't exactly what I wanted (some foreshadowing here...).
+wasn't exactly what I wanted (running Linux has made me a 
+spoiled brat).
   
 My first step was to look into how my 
 favorite computer science bloggers manage their blogs. 
@@ -146,13 +147,13 @@ answered himself. I really liked his strategy:
 This solidified my decision to use a static site generator.  
   
 I looked into the most 
-popular generators on [StaticGen](https://www.staticgen.com/),
-(because I am a proponent of open source projects) and 
+popular generators on [StaticGen](https://www.staticgen.com/)
+(because I am a proponent of open source projects), and 
 came across all the previously mentioned generators. I 
 quickly narrowed it down to the projects written in 
-Python, because duh. I was left with Pelican, Hyde, Acrylamid,
-and Nikola. I did a brief peek into all of the source code 
-first, then I decided to narrow it down to two and then get 
+Python. I was left with Pelican, Hyde, Acrylamid,
+and Nikola. I had a brief peek into all of the source code 
+before I decided to narrow it down to two and then get 
 my hands dirty.
 
 Acrylamid was a faster descendant of Pelican, so I 
