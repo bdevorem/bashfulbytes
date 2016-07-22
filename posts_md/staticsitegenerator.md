@@ -123,7 +123,7 @@ summarizing filters, and acronym-detection. And they're even on
 [Freenode](http://freenode.net/), `#acrylamid`.
 
 
-## Creating You Own Static Site Generator
+## Creating Your Own Static Site Generator
 If you have a very specific goal in mind, or none of those 
 generators really do what you want, or you just feel trapped 
 without customization (love you 
