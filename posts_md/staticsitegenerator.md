@@ -52,18 +52,19 @@ you want to choose a static site generator. Well, there are
 so many options. Here are the top generators that I looked 
 into when designing my site:  
   
-#### Jekyll
-#### Acrylamid
-#### Hugo
-#### Hyde
-#### Hexo
-#### Nikola
-#### Pelican
+#### [Jekyll](https://jekyllrb.com/)
+#### [Hugo](https://gohugo.io/)
+#### [Hexo](https://hexo.io/)
+#### [Hyde](http://hyde.github.io/)
+#### [Pelican](http://blog.getpelican.com/)
+#### [Nikola](https://getnikola.com/)
+#### [Acrylamid](https://posativ.org/acrylamid/)
 
 ## Creating You Own Static Site Generator
 If you have a very specific goal in mind, or none of those 
 generators really do what you want, or you just feel trapped 
-without custimization (love you Arch Linux), you may 
+without customization (love you 
+[Arch Linux](https://www.archlinux.org/)), you may 
 just want to make your own. It may sound like a big feat or 
 too complicated to even bother trying, but making a static 
 site generator is actually really straightforward. 
