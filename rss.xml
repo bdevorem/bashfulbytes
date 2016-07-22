@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<channel>
+	
+<title>BashfulBytes RSS Feed</title>
+<link>http://bashfulbytes.com/</link>
+<description>Weblog on all things CS/PL/life as a computer scientist</description>
+
+<item>
+	<title>Create Your Own Static Website Generator</title>
+	<link>http://bashfulbytes.com/posts/staticsitegenerator.html</link>
+	<guid>http://bashfulbytes.com/posts/staticsitegenerator.html</guid>
+	<pubDate>Sun, 19 Jun 2016 16:23:41 PST</pubDate>
+	<description>[CDATA[ What is a static site generator and how do you build one? ]]</description>
+</item>
+
+</channel>
+</rss>
+
