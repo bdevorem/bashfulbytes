@@ -106,8 +106,8 @@ It's compatible with Python 2 and 3, so there should be no
 complaints from programmers, and StaticGen says it "doesn't 
 reinvent wheels, it leverages existing tools". In my 
 opinion, Nikola is pretty sweet. Example, taken straight 
-from the documentation:
-    "DON'T READ THIS MANUAL. IF YOU NEED TO READ IT I FAILED, JUST USE THE THING."
+from the documentation:  
+    "DON'T READ THIS MANUAL. IF YOU NEED TO READ IT I FAILED, JUST USE THE THING."  
 Need I say more?
 
 #### [Acrylamid](https://posativ.org/acrylamid/)
