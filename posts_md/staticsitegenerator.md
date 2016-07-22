@@ -100,8 +100,8 @@ is a great choice.
 #### [Nikola](https://getnikola.com/)
 Another Python generator! What's even better about Nikola is that it has
 an incredibly small codebase. Going through the source is breeze, if 
-that's your style. Nikola also supports many languages for content 
-posting, but it also has incredible support for image galleries.
+that's your style. Nikola supports many languages for content 
+posting like Pelican, but it also has incredible support for image galleries.
 It's compatible with Python 2 and 3, so there should be no 
 complaints from programmers, and StaticGen says it "doesn't 
 reinvent wheels, it leverages existing tools". In my 
@@ -109,13 +109,13 @@ opinion, Nikola is pretty sweet. Example, taken straight
 from the documentation:  
 ```
 DON'T READ THIS MANUAL. IF YOU NEED TO READ IT I FAILED, JUST USE THE THING.
-```
+```  
 Need I say more?
 
 #### [Acrylamid](https://posativ.org/acrylamid/)
-Acrylamid is yet another generator written in Python. Acrylamid 
-is also big on metatdata, and you can use YAML-style frontmatter
-like Jekyll, or in the native format of Markdown, reST, and Pandoc. If 
+Acrylamid is yet another generator written in Python. Like Hyde, Acrylamid 
+is big on metadata, and you can use YAML-style frontmatter or 
+the native formats of Markdown, reST, and Pandoc. If 
 you want to use something else, you can even 
 [extend Acrylamid in 30 LoC](https://posativ.org/git/acrylamid/blob/master/acrylamid/filters/pytextile.py). 
 What's also neat? Acrylamid supports TeX hyphenation filters, 
@@ -224,6 +224,75 @@ Acrylamid was a faster descendant of Pelican, so I
 kicked Pelican off the list. Hyde was just too 
 mainstream for me, so I kicked it off the list. Not 
 all decisions need to have substantial reasoning. Plus, 
-Nikola was named after Nikola Tesla, and Acrylamid has 
-amazingly sassy documentation, so it seemed like those 
-were meant to be my final picks.  
+Nikola was named after Nikola Tesla and clearly has 
+amazingly sassy documentation, and Acrylamid loves TeX, 
+so it seemed like those were meant to be my final picks.  
+  
+I started with Acrylamid because I was drawn to the sample 
+blogs listed in the docs and the flat file system concept. 
+As I started going through the 
+code and the real world examples, I realized I hadn't 
+thought about hosting and deployment *at all*. I 
+quickly went through my options and decided on 
+Github Pages for the moment, because I didn't want 
+to engineer myself into a corner, like Might's 
+strategy. I installed Acrylamid and starting 
+hacking around, and I noticed that deploying to Github Pages 
+wasn't intuitive with the framework. So I moved on to 
+Nikola.  
+  
+Nikola caught my attention immediately with the incredible documentation.
+It seemed like Nikola and I were meant to be, and we even had a 
+two-day long love affair. You can even go back to the very first 
+commits on the Github 
+[project page](https://github.com/bdevorem/bdevorem.github.io) 
+and see all the lovely `Nikola auto commit.`'s.  
+  
+Actually, those commits, along with some slight annoyances in 
+the configuration, are what led me to creating my own 
+generator. Don't get me wrong, I am a huge fan of Nikola. In 
+my opinion, it's the best static site generator I looked into. 
+Again, I'm just a spoiled rotten Arch Linux user and I 
+wanted to do things my way, no more no less. I felt 
+constricted because I couldn't customize it as easily or as 
+much as I wanted to, and I didn't know the source well enough 
+to fork the project and turn it into my own. So, instead of
+spending the time getting to know the source, I decided to 
+dedicate my time to learning more about static site generators 
+to implement *exactly* what I wanted, without limitation or
+constriction.  
+  
+Cue the birth of yet another static site generator, called `gen`. I'm 
+creative, I know. You can view the *single file* 
+[here](https://github.com/bdevorem/bdevorem.github.io/blob/master/gen.py).  
+  
+I have my file hierarchy set up to support two different types of documents: 
+posts and pages. Posts contain YAML-style frontmatter and are added to my 
+appendix, and pages are pretty much everything else. Pages are not explicitly 
+added anywhere; unless I insert a hyperlink somewhere, pages are pretty much 
+hidden, though not obscured. I write everything in
+Markdown in Vim, and save to either `posts_md/` or `pages_md/`.  
+  
+The first thing my generator does is scan `posts_md` for every source post, 
+and converts them to HTML whilst extracting their metadata. Then, my base 
+template is applied to each post, and they all get stored in `posts/`. This 
+process is repeated for pages, minus the metadata extraction.  
+  
+After all of that HTML is created, what's left is creating my appendix, which 
+is the index of my site. When the metadata was extracted from the posts, each 
+file was grouped into a category matching its tag, and the Recent category was
+populated with the 5 most recently-created posts. This is all created in 
+Markdown for simplicity, and then it gets converted to HTML. The base template for the 
+index page is different than the base template I use to convert the pages and 
+posts, because of the tag categories. So, this separate base template is applied 
+to my HTML and the document gets written to `pages/`.  
+  
+The last step is to render the Jinja templating. I wanted to make my own function 
+for this, but it wasn't working the way I wanted it to. I installed 
+[StaticJinja](https://staticjinja.readthedocs.io/en/latest/) to do the 
+dirty work instead. Everything comes together in a simple Makefile.  
+  
+My generator is far from finished. I haven't added syntax highlighting yet, 
+I have a hotfix for binaries that I want to make more elegant, I want to add 
+a simple webserver so I don't have to rely on committing to see what the site 
+will look like, and much more. 
