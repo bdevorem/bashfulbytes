@@ -3,7 +3,7 @@
 <channel>
 	
 <title>BashfulBytes RSS Feed</title>
-<link>http://bashfulbytes.com/</link>
+<link>https://bdevorem.github.io/</link>
 <description>Weblog on all things CS/PL/life as a computer scientist</description>
 
 <item>
@@ -11,7 +11,7 @@
 	<link>http://bashfulbytes.com/posts/staticsitegenerator.html</link>
 	<guid>http://bashfulbytes.com/posts/staticsitegenerator.html</guid>
 	<pubDate>Sun, 19 Jun 2016 16:23:41 PST</pubDate>
-	<description>[CDATA[ What is a static site generator and how do you build one? ]]</description>
+	<description>What is a static site generator and how do you build one?</description>
 </item>
 
 </channel>
