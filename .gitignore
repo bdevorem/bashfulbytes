@@ -3,3 +3,7 @@
 *.swp
 *.pyc
 __pycache__/*
+posts/*
+pages/*
+*.html
+*.swo

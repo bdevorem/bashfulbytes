@@ -54,10 +54,10 @@ tag: some_tag
 ---
 ```
 Then, when the post is done, run the generator from the root
-of the project. To deploy, commit and push to Github, assuming
-you're using Github Pages for deployment. I have not implemented
-a local server yet, because it's my repo and I don't mind cluttering
-the commits :)
+of the project. To deploy, commit and push to Github if
+you're using Github Pages for deployment. I use nginx for 
+serving, so all I have to do is reload the browser page 
+to see new content.
 
 Disclaimer: this static site generator is completely tailored to
 my needs and desires. If you want to use it, feel free, but it 
@@ -65,7 +65,13 @@ might not fulfill your needs the way it does mine.
 
 ## TODO
 - [ ] Only regenerate changed files
-- [ ] Make a local server
 - [x] Migrate to VPS
-- [x] nginx or create own webserver?
+- [x] nginx
+- [x] map domain to IP
+- [ ] create own webserver?  
+- [ ] configure staticjinja instead of running defaults  
+- [ ] make url more readable (make dirs w index.html instead
+of *postname*.html  
+- [ ] make rss generator 
+- [ ] add site email?
 
