@@ -7,3 +7,4 @@ posts/*
 pages/*
 *.html
 *.swo
+hidden/*
