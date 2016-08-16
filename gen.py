@@ -27,9 +27,6 @@ sys.setdefaultencoding('utf8')
 SRC_PATH_POST = "./posts_md"
 TARGET_PATH_POST = "./posts"
 
-SRC_PATH_PAGE = "./pages_md"
-TARGET_PATH_PAGE = "./pages"
-
 RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX, UNFINISHED = ({} for i in range(6))
 
 def convert_mds(source, target):
@@ -125,9 +122,8 @@ def render_jinja():
 
 if __name__ == '__main__':
 
-    for params in [[SRC_PATH_POST, TARGET_PATH_POST], \
-			[SRC_PATH_PAGE, TARGET_PATH_PAGE]]:
-        convert_mds(*params)
+    params = [SRC_PATH_POST, TARGET_PATH_POST]
+    convert_mds(*params)
 	
     create_index()
     render_jinja()
