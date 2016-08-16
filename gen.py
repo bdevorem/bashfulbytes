@@ -19,24 +19,20 @@ import markdown
 import markdown.extensions.codehilite
 from markdown2 import markdown_path
 from datetime import date
-import jinja2
-from jinja2 import FileSystemLoader
-from jinja2.environment import Environment
+from staticjinja import make_site
 
 reload(sys)  
 sys.setdefaultencoding('utf8')
 
 SRC_PATH_POST = "./posts_md"
-TARGET_PATH_POST = "./posts/templates"
-LINK_POST = "./posts/"
+TARGET_PATH_POST = "./posts"
 
 SRC_PATH_PAGE = "./pages_md"
-TARGET_PATH_PAGE = "./pages/templates"
-LINK_PAGE = "./pages/"
+TARGET_PATH_PAGE = "./pages"
 
 RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX, UNFINISHED = ({} for i in range(6))
 
-def convert_mds(source, target, link, yaml):
+def convert_mds(source, target):
 
 	listing = os.listdir(source)
 	for infile in listing:
@@ -45,14 +41,15 @@ def convert_mds(source, target, link, yaml):
 			filename, fileext = os.path.splitext(infile)
 			
 			outfilepath = os.path.join(target, "{}.html".format(filename))
-			outlink =  os.path.join(link, "{}.html".format(filename))
 			outfile = open(outfilepath, 'w')
 
 			output = markdown_path(filepath, extras=['metadata'])
-			
-			if yaml:
-				gather_metadata(output.metadata, outlink)
-				content = '''
+            	
+			#TODO: make this less clunky	
+			try:
+				if output.metadata['tag'] != 'page':
+					gather_metadata(output.metadata, outfilepath)
+					content = '''
 {{% extends "base.html" %}}
 {{% block content %}}
 <span class="label label-primary">{}</span>
@@ -60,31 +57,32 @@ def convert_mds(source, target, link, yaml):
 {}
 {{% endblock %}}
 '''.format(output.metadata['date'], output.metadata['tag'], output)
-
-			else:			
-				content = '''
+				else:			
+					content = '''
 {{% extends "base.html" %}}
 {{% block content %}}
 {}
 {{% endblock %}}
 '''.format(output)
-			outfile.write(content)
-			outfile.close()
+				outfile.write(content)
+				outfile.close()
+			except KeyError as e:
+				print '{}'.format(e)				
 
-def gather_metadata(meta, link):
+def gather_metadata(meta, path):
 
 	tags = ['research', 'programming', 'linux', 'unfinished']
 	if meta['tag'] in tags:
-		globals()[meta['tag'].upper()][meta['title']] = link
+		globals()[meta['tag'].upper()][meta['title']] = path
 	else:
-		RANDOM[meta['title']] = link
+		RANDOM[meta['title']] = path
 
 	dt = [int(d) for d in meta['date'].split()]
 	meta['date'] = date(*dt)
 
 	oldest_time = meta['date']
 	name = meta['title']
-	RECENT[name] = [oldest_time, link]
+	RECENT[name] = [oldest_time, path]
 	tmp = name
 	if len(RECENT) > 5:
 		for name, [time, link] in RECENT.iteritems():
@@ -121,18 +119,17 @@ def create_index():
 	index.write(content)
 
 def render_jinja():
-	pass
-	# TODO: make this work, instead of using staticjinja
-	#env = Environment(loader=FileSystemLoader('.'))
-	#template = env.get_template("./templates/index_template.html")
-	#html = template.render(title="dg")
+    site = make_site(searchpath=TARGET_PATH_POST, outpath="./test")
+    site.render(use_reloader=False)
+    
 
 if __name__ == '__main__':
 
-	for params in [[SRC_PATH_POST, TARGET_PATH_POST, LINK_POST, True], \
-			[SRC_PATH_PAGE, TARGET_PATH_PAGE, LINK_PAGE, False]]:
-		convert_mds(*params)
-	create_index()
-	#render_jinja()
+    for params in [[SRC_PATH_POST, TARGET_PATH_POST], \
+			[SRC_PATH_PAGE, TARGET_PATH_PAGE]]:
+        convert_mds(*params)
+	
+    create_index()
+    render_jinja()
 
-
+# vim: ts=4
