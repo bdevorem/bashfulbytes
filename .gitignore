@@ -7,5 +7,7 @@ posts_md/*
 pages/*
 pages_md/*
 *.html
+*.xml
+*.asc
 *.swo
 hidden/*
