@@ -1,10 +1,11 @@
-*.doit.db
 *.bk
 *.swp
 *.pyc
 __pycache__/*
 posts/*
+posts_md/*
 pages/*
+pages_md/*
 *.html
 *.swo
 hidden/*
