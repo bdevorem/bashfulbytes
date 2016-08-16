@@ -1,3 +1,8 @@
+---
+title: Ideas
+date: 2016 6 1
+tag: page
+---
 # Blog Ideas
 ### get outta my head
 
