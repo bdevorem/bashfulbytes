@@ -24,13 +24,11 @@ from staticjinja import make_site
 reload(sys)  
 sys.setdefaultencoding('utf8')
 
-SRC_PATH_POST = "./posts_md"
-TARGET_PATH_POST = "./posts"
-
+SOURCE = "./posts_md"
+TARGET = "./.tmp"
 RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX, UNFINISHED = ({} for i in range(6))
 
 def convert_mds(source, target):
-
 	listing = os.listdir(source)
 	for infile in listing:
 		if infile[0] != '.':
@@ -39,35 +37,35 @@ def convert_mds(source, target):
 			
 			outfilepath = os.path.join(target, "{}.html".format(filename))
 			outfile = open(outfilepath, 'w')
-
 			output = markdown_path(filepath, extras=['metadata'])
             	
 			#TODO: make this less clunky	
 			try:
 				if output.metadata['tag'] != 'page':
 					gather_metadata(output.metadata, outfilepath)
-					content = '''
-{{% extends "base.html" %}}
-{{% block content %}}
-<span class="label label-primary">{}</span>
-<span class="label label-info">{}</span>
-{}
-{{% endblock %}}
-'''.format(output.metadata['date'], output.metadata['tag'], output)
+					date = output.metadata['date']
+					tag = output.metadata['tag']
+					label_date = '<span class="label label-primary">{}</span>'.format(date) 
+					label_tag = '<span class="label label-info">{}</span>'.format(tag)
 				else:			
-					content = '''
+					label_date = None
+					label_tag = None
+
+				content = '''
 {{% extends "base.html" %}}
 {{% block content %}}
 {}
+{}
+{}
 {{% endblock %}}
-'''.format(output)
+'''.format(label_date, label_tag, output)
 				outfile.write(content)
 				outfile.close()
+		
 			except KeyError as e:
 				print '{}'.format(e)				
 
 def gather_metadata(meta, path):
-
 	tags = ['research', 'programming', 'linux', 'unfinished']
 	if meta['tag'] in tags:
 		globals()[meta['tag'].upper()][meta['title']] = path
@@ -89,7 +87,6 @@ def gather_metadata(meta, path):
 		RECENT.pop(tmp, None)
 
 def create_index():
-	
 	try:
 		os.remove("./templates/index.html")
 	except Exception as e:
@@ -101,7 +98,8 @@ def create_index():
 	
 	for tag in ['RECENT', 'RESEARCH', 'PROGRAMMING', 'LINUX', 'RANDOM', 'UNFINISHED']:
 		md = locals()[tag.lower()] = ''
-		
+	
+		#TODO: make this less clunky	
 		if tag == 'RECENT':
 			for title, [time, link] in globals()[tag].iteritems():
 				md = md +  "[{}]({})  \r".format(title, link)
@@ -116,13 +114,11 @@ def create_index():
 	index.write(content)
 
 def render_jinja():
-    site = make_site(searchpath=TARGET_PATH_POST, outpath="./test")
+    site = make_site(searchpath=TARGET, outpath="./posts")
     site.render(use_reloader=False)
-    
 
 if __name__ == '__main__':
-
-    params = [SRC_PATH_POST, TARGET_PATH_POST]
+    params = [SOURCE, TARGET]
     convert_mds(*params)
 	
     create_index()
