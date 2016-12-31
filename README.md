@@ -72,6 +72,6 @@ might not fulfill your needs the way it does mine.
 - [ ] configure staticjinja instead of running defaults  
 - [ ] make url more readable (make dirs w index.html instead
 of *postname*.html  
-- [ ] make rss generator 
+- [x] make rss generator 
 - [ ] add site email?
 

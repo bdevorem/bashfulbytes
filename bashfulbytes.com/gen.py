@@ -10,7 +10,6 @@
 # ---
 
 # TODO: add next/previous posts on each page
-# TODO: add syntax highlighting for code posts
 
 import os
 import sys
