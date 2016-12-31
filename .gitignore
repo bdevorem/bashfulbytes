@@ -6,8 +6,11 @@ posts/*
 posts_md/*
 pages/*
 pages_md/*
+ethics/*
+ethics_md/*
 *.html
 *.xml
 *.asc
 *.swo
+*.m4a
 hidden/*
