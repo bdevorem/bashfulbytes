@@ -37,10 +37,9 @@ SRC_PATH_ETHICS = "./ethics_md"
 TARGET_PATH_ETHICS = "./ethics/templates"
 LINK_ETHICS = "./"
 
-RESEARCH, PROGRAMMING, RANDOM, LINUX, UNFINISHED, ETHICS = ({} for i in range(6))
-RECENT = []
+RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX, UNFINISHED, ETHICS = ([] for i in range(7))
 TIMES = {}
-DS = [RESEARCH, PROGRAMMING, RANDOM, LINUX, UNFINISHED, ETHICS, RECENT]
+DS = [RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX, UNFINISHED]
 
 def convert_mds(source, target, link, yaml):
     listing = os.listdir(source)
@@ -80,9 +79,13 @@ def gather_metadata(meta, link):
 
     tags = ['research', 'programming', 'linux', 'unfinished', 'ethics']
     if meta['tag'] in tags:
-	globals()[meta['tag'].upper()][meta['title']] = link
+	globals()[meta['tag'].upper()].append({
+                'title': meta['title'],
+                'link': link})
     else:
-	RANDOM[meta['title']] = link
+	RANDOM.append({
+            'title': meta['title'],
+            'link': link})
     TIMES[meta['title']] = meta['date']
 
     if meta['tag'] != 'ethics' and meta['tag'] != 'unfinished':
@@ -112,39 +115,38 @@ def sort():
     global RECENT
     for ds in DS:
         if ds is RECENT:
-            new_recent = sorted(RECENT, key=lambda k: k['time'], reverse=True)
-            RECENT = new_recent[:]
-            del new_recent
+            RECENT[:] = sorted(RECENT, key=lambda k: k['time'], reverse=True)
         else:
             pass
 
 def create_index():
-    
     try:
 	os.remove("./templates/index.html")
     except Exception as e:
 	pass
     index = open("./templates/index.html", 'w')
-
-    recent, research, programming, random, linux, unfinished = ('',)*6
     content = '{% extends "base.html" %}'
 
-    for tag in ['RECENT', 'RESEARCH', 'PROGRAMMING', 'LINUX', 'RANDOM', 'UNFINISHED']:
-	md = locals()[tag.lower()] = ''
-	
-	if tag == 'RECENT':
-	    for i, [title, time, link] in enumerate([d['name'], d['time'], d['link']] for d in globals()[tag]):
+    global DS
+    for tag in DS: 
+        tag_lower = [k for k,v in globals().iteritems() if v is tag][0].lower()
+	md = ''
+        
+	if tag is RECENT:
+	    for _, [title, time, link] in enumerate([d['name'], d['time'], d['link']] for d in tag):
                 t = "<b>{}</b> &emsp; ".format(TIMES[title])
                 t = "<span class=\"label label-default\"><b>{}</b></span>\t".format(TIMES[title])
                 md = md + t + " &emsp; [{}]({})  \r".format(title, link)
-        else:
-	    for title, link in globals()[tag].iteritems():
+
+        elif tag is RANDOM or tag is LINUX or tag is UNFINISHED or tag is PROGRAMMING or tag is RESEARCH:
+	    for _, [title, link] in enumerate([d['title'], d['link']] for d in tag):
                 t = "<span class=\"label label-default\"><b>{}</b></span>\t".format(TIMES[title])
 		md = md + t + "&emsp; [{}]({})  \r".format(title, link)
+
 	content = content + '''
 {{% block {} %}}
 {}
-{{% endblock %}}'''.format(tag.lower(), markdown.markdown(md))
+{{% endblock %}}'''.format(tag_lower, markdown.markdown(md))
 
     index.write(content)
 
@@ -155,10 +157,10 @@ def create_index():
 	pass
     index = open("./ethics/templates/index.html", 'w')
     content = '{% extends "base_index.html" %}'
-    tag = 'ETHICS'
-    md = locals()[tag.lower()] = ''
+    global ETHICS
+    md = ''
 
-    for title, link in globals()[tag].iteritems():
+    for _, [title, link] in enumerate([d['title'], d['link']] for d in ETHICS):
 	md = md +  "[{}]({})  \r".format(title, link)
     content = content + '''
 {{% block content %}}
@@ -168,8 +170,6 @@ def create_index():
 
     index.write(content)
     index.close()
-
-
 
 def render_jinja():
     pass
@@ -187,5 +187,4 @@ if __name__ == '__main__':
     sort()
     create_index()
     #render_jinja()
-
 
