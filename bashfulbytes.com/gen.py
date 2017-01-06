@@ -76,23 +76,32 @@ def convert_mds(source, target, link, yaml):
 	    outfile.close()
 
 def gather_metadata(meta, link):
+    try:
+	dt = [int(d) for d in meta['date'].split()]
+	meta['date'] = date(*dt)
+        TIMES[meta['title']] = meta['date']
+    except:
+        pass
 
-    tags = ['research', 'programming', 'linux', 'unfinished', 'ethics']
+    tags = ['research', 'programming', 'linux']
+    untimed_tags = ['unfinished', 'ethics']
+
     if meta['tag'] in tags:
+	globals()[meta['tag'].upper()].append({
+                'title': meta['title'],
+                'time': meta['date'],
+                'link': link})
+    elif meta['tag'] in untimed_tags:
 	globals()[meta['tag'].upper()].append({
                 'title': meta['title'],
                 'link': link})
     else:
 	RANDOM.append({
             'title': meta['title'],
+            'time': meta['date'],
             'link': link})
-    TIMES[meta['title']] = meta['date']
 
     if meta['tag'] != 'ethics' and meta['tag'] != 'unfinished':
-	dt = [int(d) for d in meta['date'].split()]
-	meta['date'] = date(*dt)
-        TIMES[meta['title']] = meta['date']
-	
 	oldest_time = meta['date']
 	name = meta['title']
         RECENT.append({
@@ -107,15 +116,20 @@ def gather_metadata(meta, link):
                     oldest_time = time
                     tmp = name
             RECENT[:] = [d for d in RECENT if d.get('name') != tmp]
-    else:
-	dt = [int(d) for d in meta['date'].split()]
-	#meta['date'] = datetime(*dt)
 				
 def sort():
     global RECENT
     for ds in DS:
         if ds is RECENT:
             RECENT[:] = sorted(RECENT, key=lambda k: k['time'], reverse=True)
+        elif ds is RESEARCH:
+            RESEARCH[:] = sorted(RESEARCH, key=lambda k: k['time'], reverse=True)
+        elif ds is PROGRAMMING:
+            PROGRAMMING[:] = sorted(PROGRAMMING, key=lambda k: k['time'], reverse=True)
+        elif ds is LINUX:
+            LINUX[:] = sorted(LINUX, key=lambda k: k['time'], reverse=True)
+        elif ds is RANDOM:
+            RANDOM[:] = sorted(RANDOM, key=lambda k: k['time'], reverse=True)
         else:
             pass
 
