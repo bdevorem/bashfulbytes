@@ -39,7 +39,7 @@ LINK_ETHICS = "./"
 
 RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX, UNFINISHED, ETHICS = ([] for i in range(7))
 TIMES = {}
-DS = [RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX, UNFINISHED]
+DS = [RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX]
 
 def convert_mds(source, target, link, yaml):
     listing = os.listdir(source)
