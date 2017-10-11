@@ -17,7 +17,7 @@ NEWEST = []
 reload(sys)
 
 def scan():
-    for source in ["./posts_md"]:
+    for source in ["./hackers_md"]:
         listing = os.listdir(source)
 
         for fn in listing:
@@ -72,7 +72,7 @@ def generate_xml():
 """
     for _, [fn, time, title, summary] in enumerate([d['name'], d['time'], d['title'], d['summary']] for d in NEWEST):
         print fn
-        link = "http://bashfulbytes.com/posts" + fn.replace('./posts', '')
+        link = "http://bashfulbytes.com/hackers" + fn.replace('./hackers', '')
         content = content + """
 <item>
     <title>{}</title>

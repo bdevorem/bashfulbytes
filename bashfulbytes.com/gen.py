@@ -37,7 +37,18 @@ SRC_PATH_ETHICS = "./ethics_md"
 TARGET_PATH_ETHICS = "./ethics/templates"
 LINK_ETHICS = "./"
 
+SRC_PATH_HACKERS = "./hackers_md"
+TARGET_PATH_HACKERS = "./hackers/templates"
+LINK_HACKERS = "./"
+
+SRC_PATH_PROJ = "./ggnore_md"
+TARGET_PATH_PROJ = "./ggnore/templates"
+LINK_PROJ = "./ggnore/"
+
+
 RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX, UNFINISHED, ETHICS = ([] for i in range(7))
+HACKERS = []
+PROJ = []
 TIMES = {}
 DS = [RECENT, RESEARCH, PROGRAMMING, RANDOM, LINUX]
 
@@ -51,8 +62,7 @@ def convert_mds(source, target, link, yaml):
 	    outfilepath = os.path.join(target, "{}.html".format(filename))
 	    outlink =  os.path.join(link, "{}.html".format(filename))
 	    outfile = open(outfilepath, 'w')
-
-	    output = markdown_path(filepath, extras=['metadata', 'fenced-code-blocks'])
+	    output = markdown_path(filepath, extras=['metadata', 'fenced-code-blocks', 'tables'])
 	    
 	    if yaml:
 		gather_metadata(output.metadata, outlink)
@@ -76,14 +86,20 @@ def convert_mds(source, target, link, yaml):
 	    outfile.close()
 
 def gather_metadata(meta, link):
+    global TIMES
     try:
-	dt = [int(d) for d in meta['date'].split()]
-	meta['date'] = date(*dt)
-        TIMES[meta['title']] = meta['date']
+        if meta['tag'] == 'hackers':
+            dt = [int(d) for d in meta['date'].split()]
+            meta['date'] = datetime(*dt)
+            TIMES[meta['title']] = meta['date']
+        else:
+            dt = [int(d) for d in meta['date'].split()]
+            meta['date'] = date(*dt)
+            TIMES[meta['title']] = meta['date']
     except:
         pass
 
-    tags = ['research', 'programming', 'linux']
+    tags = ['research', 'programming', 'linux', 'hackers']
     untimed_tags = ['unfinished', 'ethics']
 
     if meta['tag'] in tags:
@@ -100,8 +116,7 @@ def gather_metadata(meta, link):
             'title': meta['title'],
             'time': meta['date'],
             'link': link})
-
-    if meta['tag'] != 'ethics' and meta['tag'] != 'unfinished':
+    if meta['tag'] != 'ethics' and meta['tag'] != 'hackers' and meta['tag'] != 'unfinished':
 	oldest_time = meta['date']
 	name = meta['title']
         RECENT.append({
@@ -119,6 +134,10 @@ def gather_metadata(meta, link):
 				
 def sort():
     global RECENT
+    #global HACKERS
+    #HACKERS[:] = sorted(HACKERS, key=lambda k: k['time'], reverse=True)
+
+    # TODO: clean this up
     for ds in DS:
         if ds is RECENT:
             RECENT[:] = sorted(RECENT, key=lambda k: k['time'], reverse=True)
@@ -185,6 +204,31 @@ def create_index():
     index.write(content)
     index.close()
 
+    # create hackers index
+
+    try:
+	os.remove("./hackers/templates/index.html")
+    except Exception as e:
+	pass
+    index = open("./hackers/templates/index.html", 'w')
+    content = '{% extends "base_index.html" %}'
+    global HACKERS
+    md = ''
+
+    for _, [title, link] in enumerate([d['title'], d['link']] for d in HACKERS):
+        t = "<span class=\"label label-default\"><b>{}</b></span>\t".format(TIMES[title])
+    	md = md + t + "&emsp; [{}]({})  \r".format(title, link)
+
+    content = content + '''
+{{% block content %}}
+<h2>Hackers in the Bazaar Blog Index</h2>
+{}
+{{% endblock %}}'''.format(markdown.markdown(md))
+
+    index.write(content)
+    index.close()
+
+
 def render_jinja():
     pass
     # TODO: make this work, instead of using staticjinja
@@ -196,6 +240,8 @@ if __name__ == '__main__':
 
     for params in [[SRC_PATH_POST, TARGET_PATH_POST, LINK_POST, True], \
 		    [SRC_PATH_ETHICS, TARGET_PATH_ETHICS, LINK_ETHICS, True], \
+		    [SRC_PATH_HACKERS, TARGET_PATH_HACKERS, LINK_HACKERS, True], \
+		    [SRC_PATH_PROJ, TARGET_PATH_PROJ, LINK_PROJ, False], \
 		    [SRC_PATH_PAGE, TARGET_PATH_PAGE, LINK_PAGE, False]]:
 	convert_mds(*params)
     sort()
